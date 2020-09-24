@@ -1,0 +1,17 @@
+{
+  "name": "yo49fr-pfyddqi",
+  "hash": "QfR9jDcUAC2u+4OOlD5zhCtYvMy4O9sc5tBbIVpCzBg=",
+  "description": "Default Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "/home/vivekvt/Desktop/codemarket.io/unita/files/.serverless_nextjs/default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::314529514644:role/yo49fr-5s39ph3"
+  },
+  "arn": "arn:aws:lambda:us-east-1:314529514644:function:yo49fr-pfyddqi",
+  "region": "us-east-1"
+}

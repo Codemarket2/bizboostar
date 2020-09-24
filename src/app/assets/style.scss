@@ -1,0 +1,19 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "~react-image-gallery/styles/css/image-gallery.css";
+// @import '~formiojs/dist/formio.full.css';
+.single__account .input__box span {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: #333;
+}
+
+.single__account .input__box input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 21px;
+    padding: 0 15px;
+    border: 1px solid #bebebe;
+    outline: none;
+}

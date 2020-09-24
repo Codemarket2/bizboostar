@@ -1,0 +1,38 @@
+{
+    "name": "unitabiz-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.2.0",
+        "@zeit/next-sass": "^1.0.1",
+        "aws-amplify": "^3.3.1",
+        "aws-appsync": "^4.0.1",
+        "next": "9.3.2",
+        "next-redux-wrapper": "^6.0.2",
+        "node-sass": "^4.13.1",
+        "react": "16.13.1",
+        "react-bootstrap": "^1.3.0",
+        "react-countup": "^4.3.3",
+        "react-dom": "16.13.1",
+        "react-feather": "^2.0.8",
+        "react-formio": "^4.3.0",
+        "react-id-swiper": "^3.0.0",
+        "react-image-gallery": "^1.0.8",
+        "react-modal-video": "^1.2.3",
+        "react-redux": "^7.2.1",
+        "react-redux-loading": "^4.6.1",
+        "react-visibility-sensor": "^5.1.1",
+        "reactstrap": "^8.6.0",
+        "redux": "^4.0.5",
+        "slugify": "^1.4.5",
+        "swiper": "^5.3.6"
+    },
+    "devDependencies": {
+        "url-loader": "^4.0.0"
+    }
+}
