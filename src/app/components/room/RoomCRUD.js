@@ -173,18 +173,21 @@ function RoomCRUD(props) {
     try {
       let imageArray = [];
       const options = {
-        maxSizeMB: 0.5,
+        maxSizeMB: 0.05,
         useWebWorker: true,
       };
       for (let i = 0; i < imageFiles.length; i++) {
         let thumbnailURL =
           "https://www.traveldailymedia.com/assets/2018/03/video.png";
         let file = imageFiles[i];
-        let fileName = payload.title;
+        let fileName = payload.title.replace(" ", "");
         let extension = file.name.split(".").pop().toLowerCase();
         let { type: mimeType } = file;
         let key = `images/${uuid()}${fileName}.${extension}`;
         let url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
+        console.log(fileName);
+        console.log(key);
+        console.log(url);
         if (
           extension === "jpg" ||
           extension === "jpeg" ||
@@ -312,7 +315,7 @@ function RoomCRUD(props) {
         })),
       ];
       const options = {
-        maxSizeMB: 0.5,
+        maxSizeMB: 0.05,
         useWebWorker: true,
       };
       for (let i = 0; i < imageFiles.length; i++) {
@@ -320,7 +323,7 @@ function RoomCRUD(props) {
           "https://www.traveldailymedia.com/assets/2018/03/video.png";
 
         let file = imageFiles[i];
-        let fileName = payload.title;
+        let fileName = payload.title.replace(" ", "");
         // let fileName = file.name.split(".")[0].toLowerCase();
         let extension = file.name.split(".")[1].toLowerCase();
         let { type: mimeType } = file;

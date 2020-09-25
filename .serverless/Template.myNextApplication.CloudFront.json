@@ -34,7 +34,7 @@
             "GET"
           ],
           "lambda@edge": {
-            "origin-request": "arn:aws:lambda:us-east-1:314529514644:function:yo49fr-pfyddqi:4"
+            "origin-request": "arn:aws:lambda:us-east-1:314529514644:function:yo49fr-pfyddqi:8"
           }
         }
       }
@@ -51,7 +51,7 @@
       "GET"
     ],
     "lambda@edge": {
-      "origin-request": "arn:aws:lambda:us-east-1:314529514644:function:yo49fr-pfyddqi:4"
+      "origin-request": "arn:aws:lambda:us-east-1:314529514644:function:yo49fr-pfyddqi:8"
     },
     "compress": true
   }

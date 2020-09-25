@@ -57,7 +57,7 @@ const Layout = (props) => {
             <meta property="og:description" content={props.room.description} />
             <meta
               property="og:image"
-              content={`${props.room.images[0].original}`}
+              content={`${props.room.images[0].thumbnail}`}
             />
           </>
         )}
