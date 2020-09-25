@@ -7,7 +7,7 @@ const FormEmbbed = ({ slug }) => {
       {slug && (
         <iframe
           style={{ width: "100%", height: "500px" }}
-          src={`https://vivekt.unitabiz.com/admin/forms/${slug}`}
+          src={`https://vivekt.unitabiz.com/embbed/forms/${slug}`}
           frameBorder="0"
         ></iframe>
       )}

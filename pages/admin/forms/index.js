@@ -8,9 +8,9 @@ const FormsPage = () => {
   return (
     <Layout pageTitle="Unitabiz | Forms">
       <Navbar />
-      <PageHeader title="Manage Forms" />
+      <PageHeader title="Form" />
       <div className="p-3">
-        <FormEmbbed slug="create-room-form" />
+        <FormEmbbed slug="sample-form" />
       </div>
       <Footer />
     </Layout>

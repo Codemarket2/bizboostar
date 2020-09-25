@@ -2,8 +2,8 @@
   "name": "yo49fr-5s39ph3",
   "arn": "arn:aws:iam::314529514644:role/yo49fr-5s39ph3",
   "service": [
-    "lambda.amazonaws.com",
-    "edgelambda.amazonaws.com"
+    "edgelambda.amazonaws.com",
+    "lambda.amazonaws.com"
   ],
   "policy": {
     "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
