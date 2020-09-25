@@ -1,6 +1,5 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-// import { useLocation } from "react-router-dom";
 import { Trash, Edit2, ToggleLeft, ToggleRight } from "react-feather";
 
 const RoomTable = ({
@@ -10,8 +9,7 @@ const RoomTable = ({
   handlePublish,
   disabled,
 }) => {
-  const location = "/offices";
-  // const location = useLocation();
+  const location = "Room";
   return allRooms.length > 0 ? (
     <div className="mt-3">
       <Table bordered hover size="sm">
@@ -35,14 +33,7 @@ const RoomTable = ({
               <tr>
                 <td>{i + 1}</td>
                 <td>
-                  <a
-                    target="_blank"
-                    href={
-                      r.published
-                        ? `${"/admin/offices/" + r.slug}`
-                        : `${"/admin/offices/" + r.slug}`
-                    }
-                  >
+                  <a target="_blank" href={"/admin/offices/" + r.slug}>
                     {r.title}
                   </a>{" "}
                 </td>

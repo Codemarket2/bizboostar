@@ -9,7 +9,8 @@ import config from "../../../aws-exports";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import { client } from "../../graphql/index";
 import RoomTable from "./RoomTable";
-import { Trash, XCircle } from "react-feather";
+import { XCircle, PlusCircle } from "react-feather";
+import Compress from "browser-image-compression";
 
 const {
   aws_user_files_s3_bucket_region: region,
@@ -23,7 +24,8 @@ const CREATE_ONE_ROOM = gql`
     $slug: String!
     $price: Int!
     $description: String!
-    $images: [String]
+    $images: [RoomImagesInput]
+    $youtube: [String]
   ) {
     createOneRoom(
       userId: $userId
@@ -32,12 +34,17 @@ const CREATE_ONE_ROOM = gql`
       price: $price
       description: $description
       images: $images
+      youtube: $youtube
     ) {
       _id
       title
       price
       description
-      images
+      images {
+        original
+        thumbnail
+      }
+      youtube
       slug
       published
     }
@@ -50,7 +57,8 @@ const UPDATE_ONE_ROOM = gql`
     $slug: String
     $price: Int
     $description: String
-    $images: [String]
+    $images: [RoomImagesInput]
+    $youtube: [String]
   ) {
     updateOneRoom(
       id: $id
@@ -59,13 +67,18 @@ const UPDATE_ONE_ROOM = gql`
       price: $price
       description: $description
       images: $images
+      youtube: $youtube
     ) {
       _id
       title
       slug
       price
       description
-      images
+      images {
+        original
+        thumbnail
+      }
+      youtube
       published
     }
   }
@@ -83,12 +96,15 @@ const GET_ALL_ROOMS = gql`
       slug
       price
       description
-      images
+      images {
+        original
+        thumbnail
+      }
+      youtube
       published
     }
   }
 `;
-
 const PUBLISH_UPDATE_ONE_ROOM = gql`
   mutation UpdateOneRoom($id: ID!, $published: Boolean) {
     updateOneRoom(id: $id, published: $published) {
@@ -97,7 +113,11 @@ const PUBLISH_UPDATE_ONE_ROOM = gql`
       slug
       price
       description
-      images
+      images {
+        original
+        thumbnail
+      }
+      youtube
       published
     }
   }
@@ -111,6 +131,7 @@ function RoomCRUD(props) {
   const [payload, setPayload] = useState({
     _id: "",
     images: [],
+    youtube: [""],
     title: "",
     price: "",
     description: "",
@@ -151,17 +172,37 @@ function RoomCRUD(props) {
     props.dispatch(showLoading());
     try {
       let imageArray = [];
+      const options = {
+        maxSizeMB: 0.5,
+        useWebWorker: true,
+      };
       for (let i = 0; i < imageFiles.length; i++) {
+        let thumbnailURL =
+          "https://www.traveldailymedia.com/assets/2018/03/video.png";
         let file = imageFiles[i];
-        let fileName = file.name.split(".")[0].toLowerCase();
-        let extension = file.name.split(".")[1].toLowerCase();
+        let fileName = payload.title;
+        let extension = file.name.split(".").pop().toLowerCase();
         let { type: mimeType } = file;
         let key = `images/${uuid()}${fileName}.${extension}`;
         let url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
-        imageArray.push(url);
+        if (
+          extension === "jpg" ||
+          extension === "jpeg" ||
+          extension === "png" ||
+          extension === "gif"
+        ) {
+          let compressedFile = await Compress(file, options);
+          let thumbnailKey = `images/${uuid()}${fileName}thumbnail.${extension}`;
+          thumbnailURL = `https://${bucket}.s3.${region}.amazonaws.com/public/${thumbnailKey}`;
+          await Storage.put(thumbnailKey, compressedFile, {
+            contentType: mimeType,
+          });
+        }
         await Storage.put(key, file, {
           contentType: mimeType,
         });
+
+        imageArray.push({ original: url, thumbnail: thumbnailURL });
       }
 
       const response = await createOneRoom({
@@ -171,6 +212,7 @@ function RoomCRUD(props) {
           slug: slugify(payload.title, { lower: true }),
           price: payload.price,
           description: payload.description,
+          youtube: payload.youtube,
           images: imageArray,
         },
       });
@@ -213,10 +255,10 @@ function RoomCRUD(props) {
     for (let i = 0; i < tempFiles.length; i++) {
       let extension = tempFiles[i].name.split(".").pop().toLowerCase();
       if (extension === "mp4" || extension === "webm" || extension === "ogg") {
-        videoArray.push(URL.createObjectURL(tempFiles[i]));
+        videoArray.push({ original: URL.createObjectURL(tempFiles[i]) });
         videoFileArray.push(tempFiles[i]);
       } else {
-        imageArray.push(URL.createObjectURL(tempFiles[i]));
+        imageArray.push({ original: URL.createObjectURL(tempFiles[i]) });
         imageFileArray.push(tempFiles[i]);
       }
     }
@@ -231,7 +273,7 @@ function RoomCRUD(props) {
       updateDisabled(true);
       if (window.confirm("Are you sure you want to delete this item!")) {
         props.dispatch(showLoading());
-        const response = await deleteOneRoom({
+        await deleteOneRoom({
           variables: {
             id: id,
           },
@@ -263,18 +305,45 @@ function RoomCRUD(props) {
     updateDisabled(true);
     try {
       props.dispatch(showLoading());
-      let imageArray = [...payload.images];
+      let imageArray = [
+        ...payload.images.map((i) => ({
+          original: i.original,
+          thumbnail: i.thumbnail,
+        })),
+      ];
+      const options = {
+        maxSizeMB: 0.5,
+        useWebWorker: true,
+      };
       for (let i = 0; i < imageFiles.length; i++) {
+        let thumbnailURL =
+          "https://www.traveldailymedia.com/assets/2018/03/video.png";
+
         let file = imageFiles[i];
-        let fileName = file.name.split(".")[0].toLowerCase();
+        let fileName = payload.title;
+        // let fileName = file.name.split(".")[0].toLowerCase();
         let extension = file.name.split(".")[1].toLowerCase();
         let { type: mimeType } = file;
         let key = `images/${uuid()}${fileName}.${extension}`;
         let url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
-        imageArray.push(url);
+
+        if (
+          extension === "jpg" ||
+          extension === "jpeg" ||
+          extension === "png" ||
+          extension === "gif"
+        ) {
+          let compressedFile = await Compress(file, options);
+          let thumbnailKey = `images/${uuid()}${fileName}thumbnail.${extension}`;
+          thumbnailURL = `https://${bucket}.s3.${region}.amazonaws.com/public/${thumbnailKey}`;
+          await Storage.put(thumbnailKey, compressedFile, {
+            contentType: mimeType,
+          });
+        }
         await Storage.put(key, file, {
           contentType: mimeType,
         });
+        imageArray.push({ original: url, thumbnail: thumbnailURL });
       }
 
       let res = await updateOneRoom({
@@ -283,6 +352,7 @@ function RoomCRUD(props) {
           slug: slugify(payload.title, { lower: true }),
           price: payload.price,
           description: payload.description,
+          youtube: payload.youtube,
           images: imageArray,
           id: payload._id,
         },
@@ -296,6 +366,7 @@ function RoomCRUD(props) {
       updateDisabled(false);
       setShowModal(false);
     } catch (error) {
+      console.log(error);
       alert("Something went wrong!");
       updateDisabled(false);
       props.dispatch(hideLoading());
@@ -361,6 +432,23 @@ function RoomCRUD(props) {
     }
   };
 
+  const handleChangeYoutube = (value, index) => {
+    let tempYT = [...payload.youtube];
+    tempYT[index] = value;
+    setPayload({
+      ...payload,
+      youtube: tempYT,
+    });
+  };
+  const removeYoutubeLink = (index) => {
+    let tempYT = [...payload.youtube];
+    tempYT.splice(index, 1);
+    setPayload({
+      ...payload,
+      youtube: tempYT,
+    });
+  };
+
   return (
     <>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -419,7 +507,7 @@ function RoomCRUD(props) {
                 <br />
                 {tempImages &&
                   tempImages.map((url, i) => {
-                    let extension = url.split(".").pop().toLowerCase();
+                    let extension = url.original.split(".").pop().toLowerCase();
 
                     return (
                       <div className="d-inline-block w--50 p-1" key={i}>
@@ -441,11 +529,14 @@ function RoomCRUD(props) {
                         extension === "webm" ||
                         extension === "ogg" ? (
                           <video style={{ width: "100%" }} controls>
-                            <source src={url} type={`video/${extension}`} />
+                            <source
+                              src={url.original}
+                              type={`video/${extension}`}
+                            />
                             Your browser does not support the video tag.
                           </video>
                         ) : (
-                          <img style={{ width: "100%" }} src={url} />
+                          <img style={{ width: "100%" }} src={url.original} />
                         )}
                       </div>
                     );
@@ -470,7 +561,7 @@ function RoomCRUD(props) {
                         </button>
                         <video style={{ width: "100%" }} controls>
                           <source
-                            src={tempVideos[i]}
+                            src={url.original}
                             // type={`video/${extension}`}
                           />
                           Your browser does not support the video tag.
@@ -478,6 +569,56 @@ function RoomCRUD(props) {
                       </div>
                     );
                   })}
+              </div>
+              <div className="input__box">
+                <span>
+                  Youtube Video Link{" "}
+                  <button
+                    disabled={disabled}
+                    type="button"
+                    onClick={() =>
+                      setPayload({
+                        ...payload,
+                        youtube: [...payload.youtube, ""],
+                      })
+                    }
+                    className="btn btn-primary btn-sm p-0 rounded-pill ml-1"
+                    style={{
+                      zIndex: "3",
+                      borderRadius: "50%",
+                      border: "none",
+                    }}
+                  >
+                    <PlusCircle size={20} />
+                  </button>
+                </span>
+                {payload.youtube &&
+                  payload.youtube.map((v, i) => (
+                    <>
+                      <input
+                        onChange={(e) => handleChangeYoutube(e.target.value, i)}
+                        value={v}
+                        type="text"
+                        name="youtubelink"
+                        placeholder={`Video Link ${i + 1}`}
+                      />
+                      <button
+                        disabled={disabled}
+                        type="button"
+                        onClick={() => removeYoutubeLink(i)}
+                        className="btn btn-sm p-0 rounded-pill ml-1"
+                        style={{
+                          zIndex: "3",
+                          borderRadius: "50%",
+                          backgroundColor: "red",
+                          border: "none",
+                        }}
+                      >
+                        {" "}
+                        <XCircle size={20} />
+                      </button>
+                    </>
+                  ))}
               </div>
               <div className="input__box">
                 <span>Description</span>
@@ -492,14 +633,19 @@ function RoomCRUD(props) {
                 />
               </div>
               <Button disabled={disabled} type="submit" variant="primary">
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-                {edit ? "Edit Room" : "Add Room"}
+                {disabled ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ) : edit ? (
+                  "Update Room"
+                ) : (
+                  "Add Room"
+                )}
               </Button>{" "}
               <Button
                 disabled={disabled}
@@ -520,6 +666,7 @@ function RoomCRUD(props) {
             _id: "",
             title: "",
             images: [],
+            youtube: [""],
             price: "",
             description: "",
           });
@@ -546,7 +693,7 @@ function RoomCRUD(props) {
 const mapStateToProps = ({ auth }) => {
   return {
     authenticated: auth.authenticated,
-    userId: auth.authenticated ? auth.data.attributes.sub : "vt",
+    userId: auth.authenticated ? auth.data.attributes.sub : null,
   };
 };
 

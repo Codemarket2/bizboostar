@@ -24,21 +24,16 @@ class Sample extends React.Component {
     };
 
     this.customImages = [];
+    console.log("this.props.room ", this.props.room);
     this.props.room.images.map((i) => {
-      let extension = i.split(".").pop().toLowerCase();
+      let extension = i.original.split(".").pop().toLowerCase();
       if (
         extension === "png" ||
         extension === "jpg" ||
         extension === "jpeg" ||
         extension === "gif"
       ) {
-        return (this.customImages = [
-          ...this.customImages,
-          {
-            original: i,
-            thumbnail: i,
-          },
-        ]);
+        return (this.customImages = [...this.customImages, i]);
       } else if (
         extension === "mp4" ||
         extension === "webm" ||
@@ -47,15 +42,27 @@ class Sample extends React.Component {
         return (this.customImages = [
           ...this.customImages,
           {
-            thumbnail:
-              "https://image.freepik.com/free-vector/video-player-template-media-player-web-page_186930-293.jpg",
-            embedUrl: i,
-            original: `https://www.xmple.com/wallpaper/solid-color-single-one-colour-pink-plain-1920x1080-c-ffcbef-f-24.svg`,
+            thumbnail: i.thumbnail,
+            embedUrl: i.original,
+            original: i.thumbnail,
             // description: "Render custom slides within the gallery",
             renderItem: this._renderVideo.bind(this),
           },
         ]);
       }
+    });
+    this.props.room.youtube.map((y) => {
+      return (this.customImages = [
+        ...this.customImages,
+        {
+          thumbnail:
+            "https://www.traveldailymedia.com/assets/2018/03/video.png",
+          embedUrl: y,
+          original: "https://www.traveldailymedia.com/assets/2018/03/video.png",
+          // description: "Render custom slides within the gallery",
+          renderItem: this._renderYoutubeVideo.bind(this),
+        },
+      ]);
     });
   }
 
@@ -139,6 +146,26 @@ class Sample extends React.Component {
         this.setState({ showGalleryFullscreenButton: false });
       }
     }
+  }
+
+  _renderYoutubeVideo(item) {
+    return (
+      <div>
+        <div className="video-wrapper">
+          {/* <a
+            className="close-video"
+            onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
+          ></a> */}
+          <iframe
+            width="560"
+            height="315"
+            src={item.embedUrl}
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    );
   }
 
   _renderVideo(item) {

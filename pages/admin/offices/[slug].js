@@ -17,7 +17,11 @@ const GET_ONE_ROOM_BY_SLUG = gql`
       slug
       price
       description
-      images
+      images {
+        original
+        thumbnail
+      }
+      youtube
       published
     }
   }

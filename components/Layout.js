@@ -55,7 +55,10 @@ const Layout = (props) => {
           <>
             <meta property="og:title" content={props.room.title} />
             <meta property="og:description" content={props.room.description} />
-            <meta property="og:image" content={`${props.room.images[0]}`} />
+            <meta
+              property="og:image"
+              content={`${props.room.images[0].original}`}
+            />
           </>
         )}
       </Head>

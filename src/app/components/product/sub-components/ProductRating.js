@@ -15,4 +15,8 @@ const ProductRating = ({ ratingValue }) => {
   return <Fragment>{rating}</Fragment>;
 };
 
+ProductRating.propTypes = {
+  ratingValue: PropTypes.number
+};
+
 export default ProductRating;
