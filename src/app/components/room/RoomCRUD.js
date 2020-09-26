@@ -17,6 +17,12 @@ const {
   aws_user_files_s3_bucket: bucket,
 } = config;
 
+const options = {
+  maxSizeMB: 0.03,
+  maxIteration: 70,
+  useWebWorker: true,
+};
+
 const CREATE_ONE_ROOM = gql`
   mutation CreateOneRoom(
     $userId: String!
@@ -172,10 +178,7 @@ function RoomCRUD(props) {
     props.dispatch(showLoading());
     try {
       let imageArray = [];
-      const options = {
-        maxSizeMB: 0.05,
-        useWebWorker: true,
-      };
+
       for (let i = 0; i < imageFiles.length; i++) {
         let thumbnailURL =
           "https://www.traveldailymedia.com/assets/2018/03/video.png";
@@ -314,10 +317,6 @@ function RoomCRUD(props) {
           thumbnail: i.thumbnail,
         })),
       ];
-      const options = {
-        maxSizeMB: 0.05,
-        useWebWorker: true,
-      };
       for (let i = 0; i < imageFiles.length; i++) {
         let thumbnailURL =
           "https://www.traveldailymedia.com/assets/2018/03/video.png";

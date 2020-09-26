@@ -45,7 +45,7 @@ export async function getServerSideProps({ query }) {
   const { slug } = query;
   const room = await client.query({
     query: GET_ONE_ROOM_BY_SLUG,
-    variables: { slug: slug, userId: "vt" },
+    variables: { slug: slug, userId: "c8ae5f4b-3e52-4afb-b282-3abf09350439" },
   });
 
   return {

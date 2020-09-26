@@ -1,7 +1,6 @@
 import React from "react";
-// import IframeResizer from "iframe-resizer-react";
 
-const FormEmbbed = ({ slug }) => {
+const FormEmbed = ({ slug }) => {
   return (
     <div>
       {slug && (
@@ -15,4 +14,4 @@ const FormEmbbed = ({ slug }) => {
   );
 };
 
-export default FormEmbbed;
+export default FormEmbed;
