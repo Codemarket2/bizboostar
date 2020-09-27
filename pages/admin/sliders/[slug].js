@@ -8,7 +8,6 @@ import ViewImageSlider from "../../../src/app/components/imageSlider/ViewImageSl
 
 const SliderPage = () => {
   const router = useRouter();
-  console.log("router obj", router.query.slug);
   return (
     <Layout pageTitle="Unitabiz | Slider">
       <Navbar />

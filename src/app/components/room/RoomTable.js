@@ -33,7 +33,7 @@ const RoomTable = ({
               <tr>
                 <td>{i + 1}</td>
                 <td>
-                  <a target="_blank" href={"/admin/offices/" + r.slug}>
+                  <a target="_blank" href={"/offices/" + r.slug}>
                     {r.title}
                   </a>{" "}
                 </td>

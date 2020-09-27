@@ -137,7 +137,7 @@ function RoomCRUD(props) {
   const [payload, setPayload] = useState({
     _id: "",
     images: [],
-    youtube: [""],
+    youtube: [],
     title: "",
     price: "",
     description: "",
@@ -158,6 +158,7 @@ function RoomCRUD(props) {
         query: GET_ALL_ROOMS,
       })
       .then(({ data }) => {
+        setAllRooms(data);
         setAllRooms(data.getAllRooms);
         props.dispatch(hideLoading());
       })
@@ -230,6 +231,7 @@ function RoomCRUD(props) {
         title: "",
         price: "",
         description: "",
+        youtube: [],
       });
       setShowModal(false);
       alert("Succesfully created room!");
@@ -668,7 +670,7 @@ function RoomCRUD(props) {
             _id: "",
             title: "",
             images: [],
-            youtube: [""],
+            youtube: [],
             price: "",
             description: "",
           });
