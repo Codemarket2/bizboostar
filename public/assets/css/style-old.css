@@ -920,7 +920,6 @@ h6 {
 }
 
 .banner-one__shape-moc-1 {
-	width: 80px;
 	top: 15%;
 	right: -9%;
 	-webkit-transform-origin: center bottom;
@@ -967,7 +966,6 @@ h6 {
 }
 
 .banner-one__shape-4 {
-	width: 80px;
 	top: 19%;
 	right: 45%;
 	-webkit-animation-name: bubbleMover;
@@ -992,9 +990,8 @@ h6 {
 }
 
 .banner-one__shape-6 {
-	width: 80px;
 	bottom: 29%;
-	right: 20%;
+	right: 30%;
 	-webkit-animation-name: shapeMover;
 	animation-name: shapeMover;
 	-webkit-animation-duration: 9s;
