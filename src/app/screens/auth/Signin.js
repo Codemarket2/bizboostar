@@ -33,6 +33,11 @@ class Signin extends Component {
           const data = {
             attributes: res.attributes,
             signInUserSession: res.signInUserSession,
+            admin: res.signInUserSession.accessToken.payload["cognito:groups"]
+              ? res.signInUserSession.accessToken.payload[
+                  "cognito:groups"
+                ][0] === "admin"
+              : false,
           };
 
           this.props.dispatch(setAuthUser(data));
@@ -97,9 +102,10 @@ class Signin extends Component {
 
   render() {
     const { email, password, disabled, verify, code } = this.state;
-    if (this.props.authenticated) {
-      return Router.push("/");
-    } else if (verify) {
+    // if (this.props.authenticated) {
+    //   return Router.push(this.props.redirect);
+    // } else
+    if (verify) {
       return (
         <div>
           <h1 className="text-center">Account Verification</h1>
@@ -181,9 +187,10 @@ class Signin extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, redirect }) => {
   return {
     authenticated: auth.authenticated,
+    redirect,
   };
 };
 

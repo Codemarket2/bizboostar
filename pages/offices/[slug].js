@@ -4,7 +4,6 @@ import Layout from "../../components/Layout";
 import Navbar from "../../components/Navbar";
 import PageHeader from "../../components/PageHeader";
 import Footer from "../../components/Footer";
-// import ProductImageDescription from "../../src/app/wrappers/ProductImageDescription";
 import Product from "../../src/app/components/airbnb/Product";
 import NotFound from "../../src/app/components/other/NotFound";
 import { client } from "../../src/app/graphql/index";

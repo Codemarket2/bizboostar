@@ -1,6 +1,5 @@
 import "../node_modules/react-modal-video/scss/modal-video.scss";
 import ReduxLoadingBar from "react-redux-loading";
-
 import { Provider, connect } from "react-redux";
 import { createStore } from "redux";
 import { ApolloProvider } from "@apollo/client";
@@ -24,8 +23,9 @@ function MyApp({ Component, pageProps }) {
         <ReduxLoadingBar
           style={{ color: "red", zIndex: 9989, position: "fixed", top: 0 }}
         />
-        <GetData />
-        <Component {...pageProps} />
+        <GetData>
+          <Component {...pageProps} />
+        </GetData>
       </ApolloProvider>
     </Provider>
   );
@@ -33,7 +33,13 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
-const GetData = connect()((props) => {
+const mapStateToProps = ({ auth }) => {
+  return {
+    initial: auth.initial,
+  };
+};
+
+const GetData = connect(mapStateToProps)((props) => {
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("unitabiz-data"));
     if (data) {
@@ -42,5 +48,5 @@ const GetData = connect()((props) => {
       props.dispatch(initialAuthUser());
     }
   }, []);
-  return null;
+  return props.initial ? props.children : null;
 });

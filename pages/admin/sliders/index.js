@@ -8,9 +8,11 @@ const SlidersPage = () => (
   <Layout pageTitle="Unita | Sliders">
     <Navbar />
     <PageHeader title="Manage Sliders" />
-    <div className="p-3">
-      <ImageSliderCRUD />
-    </div>
+    <AuthRequired redirectPath="/admin/sliders" mustAdmin={true}>
+      <div className="p-3">
+        <ImageSliderCRUD />
+      </div>
+    </AuthRequired>
     <Footer />
   </Layout>
 );

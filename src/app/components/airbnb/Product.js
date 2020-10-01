@@ -5,19 +5,9 @@ import Slider from "../product/slider/index";
 const Product = (props) => {
   const [showModal, setShowModal] = useState(false);
   const amenities = props.room ? JSON.parse(props.room.amenities) : {};
-  const gridPhoto = props.room
-    ? props.room.images.map((i) => {
-        let extension = i.original.split(".").pop().toLowerCase();
-        if (
-          extension === "jpg" ||
-          extension === "jpeg" ||
-          extension === "png" ||
-          extension === "gif"
-        ) {
-          return i;
-        }
-      })
-    : [];
+  const gridPhoto = props.room.images.filter(
+    (i) => i.original.split(".").pop().toLowerCase() === "jpg"
+  );
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
       <Container className="pt-5 pb-5">
@@ -52,7 +42,7 @@ const Product = (props) => {
           </Modal>
         </div>
         <Row className="pt-md-3 pb-md-5 d-none d-md-flex">
-          <Col md={gridPhoto.length >= 5 ? "6" : "12"} sm="12">
+          <Col md={gridPhoto.length >= 3 ? "6" : "12"} sm="12">
             <div
               style={{
                 borderBottomLeftRadius: "10px",
@@ -67,7 +57,7 @@ const Product = (props) => {
               />
             </div>
           </Col>
-          {gridPhoto.length >= 5 && (
+          {gridPhoto.length >= 3 && (
             <Col md="6" sm="12">
               <div
                 style={{
@@ -157,7 +147,7 @@ const Product = (props) => {
                           );
                           return amenities[key] === true &&
                             tempValue[0].icon ? (
-                            <li className="d-block">
+                            <li key={key} className="d-block">
                               <span className="mr-3">
                                 <i
                                   className={`fa  fa-lg ${

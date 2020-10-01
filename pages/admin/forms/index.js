@@ -9,9 +9,12 @@ const FormsPage = () => {
     <Layout pageTitle="Unitabiz | Forms">
       <Navbar />
       <PageHeader title="Form" />
-      <div className="p-3">
-        <FormEmbed slug="sample-form" />
-      </div>
+      <AuthRequired redirectPath="/admin/forms" mustAdmin={true}>
+        <div className="p-3">
+          <FormEmbed slug="sample-form" />
+        </div>
+      </AuthRequired>
+
       <Footer />
     </Layout>
   );
