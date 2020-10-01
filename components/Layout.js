@@ -9,6 +9,10 @@ const Layout = (props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/assets/images/favicons/apple-touch-icon.png"
