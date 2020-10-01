@@ -6,7 +6,11 @@ const Product = (props) => {
   const [showModal, setShowModal] = useState(false);
   const amenities = props.room ? JSON.parse(props.room.amenities) : {};
   const gridPhoto = props.room.images.filter(
-    (i) => i.original.split(".").pop().toLowerCase() === "jpg"
+    (i) =>
+      i.original.split(".").pop().toLowerCase() === "jpg" ||
+      i.original.split(".").pop().toLowerCase() === "jpeg" ||
+      i.original.split(".").pop().toLowerCase() === "png" ||
+      i.original.split(".").pop().toLowerCase() === "gif"
   );
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
@@ -51,6 +55,7 @@ const Product = (props) => {
               }}
             >
               <img
+                className="cursor-pointer"
                 style={{ width: "100%", objectFit: "cover" }}
                 alt={props.room.title}
                 src={gridPhoto[0].original}
