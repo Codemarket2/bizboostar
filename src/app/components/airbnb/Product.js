@@ -4,7 +4,7 @@ import Slider from "../product/slider/index";
 
 const Product = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const amenities = JSON.parse(props.room.amenities);
+  const amenities = props.room ? JSON.parse(props.room.amenities) : {};
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
       <Container className="pt-5 pb-5">
