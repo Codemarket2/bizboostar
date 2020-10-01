@@ -1,10 +1,23 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Modal, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import Slider from "../product/slider/index";
 
 const Product = (props) => {
   const [showModal, setShowModal] = useState(false);
   const amenities = props.room ? JSON.parse(props.room.amenities) : {};
+  const gridPhoto = props.room
+    ? props.room.images.map((i) => {
+        let extension = i.original.split(".").pop().toLowerCase();
+        if (
+          extension === "jpg" ||
+          extension === "jpeg" ||
+          extension === "png" ||
+          extension === "gif"
+        ) {
+          return i;
+        }
+      })
+    : [];
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
       <Container className="pt-5 pb-5">
@@ -39,7 +52,7 @@ const Product = (props) => {
           </Modal>
         </div>
         <Row className="pt-md-3 pb-md-5 d-none d-md-flex">
-          <Col md="6" sm="12">
+          <Col md={gridPhoto.length > 4 ? "6" : "12"} sm="12">
             <div
               style={{
                 borderBottomLeftRadius: "10px",
@@ -49,61 +62,63 @@ const Product = (props) => {
             >
               <img
                 style={{ width: "100%", objectFit: "cover" }}
-                alt="image1"
-                src={props.room.images[0].original}
+                alt={props.room.title}
+                src={gridPhoto[0].original}
               />
             </div>
           </Col>
-          <Col md="6" sm="12">
-            <div
-              style={{
-                borderBottomRightRadius: "10px",
-                borderTopRightRadius: "10px",
-                overflow: "hidden",
-              }}
-            >
+          {gridPhoto.length > 4 && (
+            <Col md="6" sm="12">
               <div
-                className="position-absolute"
-                style={{ zIndex: 2, bottom: "10px", right: "25px" }}
+                style={{
+                  borderBottomRightRadius: "10px",
+                  borderTopRightRadius: "10px",
+                  overflow: "hidden",
+                }}
               >
-                <Button
-                  block
-                  size="sm"
-                  className="border-0"
-                  style={{ backgroundColor: "#E92F58" }}
-                  onClick={() => setShowModal(true)}
+                <div
+                  className="position-absolute"
+                  style={{ zIndex: 2, bottom: "10px", right: "25px" }}
                 >
-                  <span>
-                    <b>See all photos</b>
-                  </span>
-                </Button>
+                  <Button
+                    block
+                    size="sm"
+                    className="border-0"
+                    style={{ backgroundColor: "#E92F58" }}
+                    onClick={() => setShowModal(true)}
+                  >
+                    <span>
+                      <b>See all photos</b>
+                    </span>
+                  </Button>
+                </div>
+                <img
+                  className="pb-1 pr-1"
+                  style={{ width: "50%" }}
+                  alt={props.room.title}
+                  src={gridPhoto[1].original}
+                />
+                <img
+                  className="pl-1 pb-1"
+                  style={{ width: "50%", paddingRight: "0px important" }}
+                  alt={props.room.title}
+                  src={gridPhoto[2].original}
+                />
+                <img
+                  className="pt-1 pr-1"
+                  style={{ width: "50%" }}
+                  alt={props.room.title}
+                  src={gridPhoto[3].original}
+                />
+                <img
+                  className="pt-1 pl-1"
+                  style={{ width: "50%", paddingRight: "0px important" }}
+                  alt={props.room.title}
+                  src={gridPhoto[4].original}
+                />
               </div>
-              <img
-                className="pb-1 pr-1"
-                style={{ width: "50%" }}
-                alt="image1"
-                src={props.room.images[0].original}
-              />
-              <img
-                className="pl-1 pb-1"
-                style={{ width: "50%", paddingRight: "0px important" }}
-                alt="image1"
-                src={props.room.images[0].original}
-              />
-              <img
-                className="pt-1 pr-1"
-                style={{ width: "50%" }}
-                alt="image1"
-                src={props.room.images[0].original}
-              />
-              <img
-                className="pt-1 pl-1"
-                style={{ width: "50%", paddingRight: "0px important" }}
-                alt="image1"
-                src={props.room.images[0].original}
-              />
-            </div>
-          </Col>
+            </Col>
+          )}
         </Row>
         <Row className="pt-md-3 pb-md-5 d-md-none">
           <Col>

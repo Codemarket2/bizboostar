@@ -76,13 +76,11 @@ const OfficePage = ({ room }) => {
     <Layout room={room} pageTitle="Unitabiz | Office">
       <Navbar />
       <PageHeader title="Offices" />
-      <div className="p-3">
-        {newRoom ? (
-          <Product room={newRoom} allAmenities={allAmenities} />
-        ) : (
-          showError && <NotFound />
-        )}
-      </div>
+      {newRoom ? (
+        <Product room={newRoom} allAmenities={allAmenities} />
+      ) : (
+        showError && <NotFound />
+      )}
       <Footer />
     </Layout>
   );
