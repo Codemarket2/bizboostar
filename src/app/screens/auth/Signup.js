@@ -48,12 +48,13 @@ export default class Signup extends Component {
     const { email, code } = this.state;
     Auth.confirmSignUp(email, code)
       .then((res) => {
-        this.setState({
-          code: "",
-          email: "",
-          disabled: false,
-          auth: true,
-        });
+        Router.push("/auth/signin");
+        // this.setState({
+        //   code: "",
+        //   email: "",
+        //   disabled: false,
+        //   auth: true,
+        // });
       })
       .catch((err) => {
         this.setState({ ...this.state, disabled: false });
@@ -82,9 +83,10 @@ export default class Signup extends Component {
 
   render() {
     const { email, password, name, code, verify, auth, disabled } = this.state;
-    if (auth) {
-      return Router.push("/auth/signin");
-    } else if (verify) {
+    // if (auth) {
+    //   return Router.push("/auth/signin");
+    // } else
+    if (verify) {
       return (
         <div className="mt-4">
           <h1 className="text-center">Account Verification</h1>
