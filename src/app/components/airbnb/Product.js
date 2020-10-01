@@ -52,7 +52,7 @@ const Product = (props) => {
           </Modal>
         </div>
         <Row className="pt-md-3 pb-md-5 d-none d-md-flex">
-          <Col md={gridPhoto.length > 4 ? "6" : "12"} sm="12">
+          <Col md={gridPhoto.length >= 5 ? "6" : "12"} sm="12">
             <div
               style={{
                 borderBottomLeftRadius: "10px",
@@ -67,7 +67,7 @@ const Product = (props) => {
               />
             </div>
           </Col>
-          {gridPhoto.length > 4 && (
+          {gridPhoto.length >= 5 && (
             <Col md="6" sm="12">
               <div
                 style={{
@@ -92,30 +92,38 @@ const Product = (props) => {
                     </span>
                   </Button>
                 </div>
-                <img
-                  className="pb-1 pr-1"
-                  style={{ width: "50%" }}
-                  alt={props.room.title}
-                  src={gridPhoto[1].original}
-                />
-                <img
-                  className="pl-1 pb-1"
-                  style={{ width: "50%", paddingRight: "0px important" }}
-                  alt={props.room.title}
-                  src={gridPhoto[2].original}
-                />
-                <img
-                  className="pt-1 pr-1"
-                  style={{ width: "50%" }}
-                  alt={props.room.title}
-                  src={gridPhoto[3].original}
-                />
-                <img
-                  className="pt-1 pl-1"
-                  style={{ width: "50%", paddingRight: "0px important" }}
-                  alt={props.room.title}
-                  src={gridPhoto[4].original}
-                />
+                {gridPhoto[1] && (
+                  <img
+                    className="pb-1 pr-1"
+                    style={{ width: "50%" }}
+                    alt={props.room.title}
+                    src={gridPhoto[1].original}
+                  />
+                )}
+                {gridPhoto[2] && (
+                  <img
+                    className="pl-1 pb-1"
+                    style={{ width: "50%", paddingRight: "0px important" }}
+                    alt={props.room.title}
+                    src={gridPhoto[2].original}
+                  />
+                )}
+                {gridPhoto[3] && (
+                  <img
+                    className="pt-1 pr-1"
+                    style={{ width: "50%" }}
+                    alt={props.room.title}
+                    src={gridPhoto[3].original}
+                  />
+                )}
+                {gridPhoto[4] && (
+                  <img
+                    className="pt-1 pl-1"
+                    style={{ width: "50%", paddingRight: "0px important" }}
+                    alt={props.room.title}
+                    src={gridPhoto[4].original}
+                  />
+                )}
               </div>
             </Col>
           )}
