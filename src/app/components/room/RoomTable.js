@@ -31,7 +31,7 @@ const RoomTable = ({
         <tbody>
           {allRooms &&
             allRooms.map((r, i) => (
-              <tr>
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <td>
                   <Link href={`/offices/${r.slug}`}>

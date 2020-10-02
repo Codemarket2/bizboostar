@@ -5,19 +5,21 @@ import NotFound from "./NotFound";
 
 const AuthRequired = (props) => (
   <div>
-    {props.authenticated ? (
-      props.mustAdmin ? (
-        props.admin ? (
-          props.children
+    {props.initial ? (
+      props.authenticated ? (
+        props.mustAdmin ? (
+          props.admin ? (
+            props.children
+          ) : (
+            <NotFound />
+          )
         ) : (
-          <NotFound />
+          props.children
         )
       ) : (
-        props.children
+        <UnAuthorised redirectPath={props.redirectPath} />
       )
-    ) : (
-      <UnAuthorised redirectPath={props.redirectPath} />
-    )}
+    ) : null}
   </div>
 );
 
@@ -25,6 +27,7 @@ const mapStateToProps = ({ auth }) => {
   return {
     authenticated: auth.authenticated,
     admin: auth.authenticated ? auth.data.admin : false,
+    initial: auth.initial,
   };
 };
 export default connect(mapStateToProps)(AuthRequired);

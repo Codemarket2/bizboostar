@@ -45,7 +45,8 @@ const OfficePage = ({ room }) => {
   const [newRoom, setNewRoom] = useState();
   const [allAmenities, setAllAmenities] = useState([]);
   const [showError, setShowError] = useState(false);
-  useEffect(async () => {
+
+  const getRoom = async () => {
     try {
       const room = await client.query({
         query: GET_ONE_ROOM_BY_SLUG,
@@ -70,6 +71,10 @@ const OfficePage = ({ room }) => {
       setShowError(true);
       console.log(error);
     }
+  };
+
+  useEffect(() => {
+    getRoom();
   }, []);
   return (
     <Layout room={room} pageTitle="Unitabiz | Office">
