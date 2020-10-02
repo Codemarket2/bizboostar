@@ -3,6 +3,7 @@ import Navbar from "../../../components/Navbar";
 import PageHeader from "../../../components/PageHeader";
 import Footer from "../../../components/Footer";
 import ImageSliderCRUD from "../../../src/app/components/imageSlider/ImageSliderCRUD";
+import AuthRequired from "../../../src/app/components/other/AuthRequired";
 
 const SlidersPage = () => (
   <Layout pageTitle="Unita | Sliders">

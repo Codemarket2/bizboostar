@@ -3,6 +3,7 @@ import Navbar from "../../../components/Navbar";
 import PageHeader from "../../../components/PageHeader";
 import Footer from "../../../components/Footer";
 import FormEmbed from "../../../src/app/components/formBuilder/FormEmbed";
+import AuthRequired from "../../../src/app/components/other/AuthRequired";
 
 const FormsPage = () => {
   return (
