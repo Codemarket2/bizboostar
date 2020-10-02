@@ -905,8 +905,25 @@ h6 {
     transform-origin: center bottom;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    -webkit-animation-name: bounce;
-    animation-name: bounce;
+    -webkit-animation-name: shapeMover;
+    animation-name: shapeMover;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.banner-one__shape-moc-camera {
+    width: 40px;
+    top: 40%;
+    left: 30%;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: bubbleMover;
+    animation-name: bubbleMover;
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
     -webkit-animation-duration: 5s;
@@ -918,25 +935,6 @@ h6 {
 .banner-one__shape-1 {
     top: 3%;
     left: 0;
-}
-.banner-one__shape-camera {
-    width: 60px;
-    top: 22%;
-    left: 35%;
-    -webkit-transform-origin: center bottom;
-    transform-origin: center bottom;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: banner3Shake;
-    animation-name: banner3Shake;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
 }
 
 .banner-one__shape-vr {

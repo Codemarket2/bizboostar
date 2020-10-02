@@ -24,7 +24,6 @@ const GET_ALL_ROOMS = gql`
 
 const Banner = () => {
   const { data, loading, error } = useQuery(GET_ALL_ROOMS);
-  console.log("data = ", data);
   return (
     <section
       className="banner-one"
@@ -66,7 +65,7 @@ const Banner = () => {
       <img
           src="/assets/images/shapes/camera.png"
           alt=""
-          className="banner-one__shape-moc-microphone"
+          className="banner-one__shape-moc-camera"
         />
         <img
           src="/assets/images/shapes/MICROPHONE.png"
@@ -81,9 +80,9 @@ const Banner = () => {
         <div className="row">
           <div className="col-lg-6">
             <div className="banner-one__content">
-              <p className="banner-one__tag-line">
+              {/* <p className="banner-one__tag-line">
                 Creative Hub for Innovators <a href="#">free trial</a>
-              </p>
+              </p> */}
               <h3>
                 Offices & Digital Studios for <br />
                 Creative Innovators
@@ -101,62 +100,84 @@ const Banner = () => {
               </a>
             </div>
           </div>
-          <div className="col-lg-6">
-            <Table bordered hover size="sm">
-              <tbody
-                style={{
-                  height: "300px !important",
-                  overflowY: "scroll",
-                  overflowX: "hidden",
-                }}
-              >
-                {data && data.getAllRooms !== null
-                  ? data.getAllRooms.map((r, i) => {
-                      const roomImage = r.images.filter(
-                        (i) =>
-                          i.original.split(".").pop().toLowerCase() === "jpg" ||
-                          i.original.split(".").pop().toLowerCase() ===
-                            "jpeg" ||
-                          i.original.split(".").pop().toLowerCase() === "png" ||
-                          i.original.split(".").pop().toLowerCase() === "gif"
-                      );
-                      return (
-                        <tr key={i}>
-                          <td className="text-center">
-                            <Link href={`/offices/${r.slug}`}>
-                              <a className="text-light">
-                                <b>{r.title}</b>
-                              </a>
-                            </Link>
-                          </td>
-                          <td>
-                            <div className="text-center">
-                              {roomImage[0] && (
-                                <img
-                                  //   className="d-inline"
-                                  style={{ width: "100px" }}
-                                  src={roomImage[0].thumbnail}
-                                  alt={r.title}
-                                />
-                              )}
-                              {roomImage[1] && (
-                                <img
-                                  className="ml-1"
-                                  style={{ width: "100px" }}
-                                  src={roomImage[1].thumbnail}
-                                  alt={r.title}
-                                />
-                              )}
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })
-                  : null}
-              </tbody>
-            </Table>
+          <div className="col-lg-6 mt-md-3">
+            <div
+              className="homepage-offices-scroll"
+              style={{
+                maxHeight: "400px !important",
+                overflowY: "scroll",
+                overflowX: "hidden",
+                // overflow: "hidden",
+                backgroundColor: "white",
+                border: "1px solid rgb(221, 221, 221)",
+                borderRadius: "12px",
+                boxShadow: "rgba(0, 0, 0, 0.12) 0px 6px 16px",
+              }}
+            >
+              <Table bordered hover size="sm">
+                <tbody>
+                  {data && data.getAllRooms !== null
+                    ? data.getAllRooms.map((r, i) => {
+                        const roomImage = r.images.filter(
+                          (i) =>
+                            i.original.split(".").pop().toLowerCase() ===
+                              "jpg" ||
+                            i.original.split(".").pop().toLowerCase() ===
+                              "jpeg" ||
+                            i.original.split(".").pop().toLowerCase() ===
+                              "png" ||
+                            i.original.split(".").pop().toLowerCase() === "gif"
+                        );
+                        return (
+                          <tr key={i}>
+                            <td className="text-center">
+                              <Link href={`/offices/${r.slug}`}>
+                                <a className="text-dark">
+                                  <b>{r.title}</b>
+                                </a>
+                              </Link>
+                            </td>
+                            <td>
+                              <div className="text-center">
+                                {roomImage[0] && (
+                                  <img
+                                    //   className="d-inline"
+                                    style={{ width: "100px" }}
+                                    src={roomImage[0].thumbnail}
+                                    alt={r.title}
+                                  />
+                                )}
+                                {roomImage[1] && (
+                                  <img
+                                    className="ml-1"
+                                    style={{ width: "100px" }}
+                                    src={roomImage[1].thumbnail}
+                                    alt={r.title}
+                                  />
+                                )}
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    : null}
+                </tbody>
+              </Table>
+            </div>
             <div>
-              <FormEmbed height="240px" slug="homepage-email-form" />
+              <FormEmbed
+                style={{
+                  marginTop: "10px",
+                  overflow: "hidden",
+                  backgroundColor: "white",
+                  border: "1px solid rgb(221, 221, 221)",
+                  borderRadius: "12px",
+                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 6px 16px",
+                }}
+                height="240px"
+                slug="homepage-email-form"
+                scrolling="no"
+              />
             </div>
           </div>
         </div>
