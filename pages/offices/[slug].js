@@ -88,13 +88,19 @@ const OfficePage = ({ room }) => {
 export default OfficePage;
 
 export async function getServerSideProps({ query }) {
-  const { slug } = query;
-  const room = await client.query({
-    query: GET_ONE_ROOM_BY_SLUG,
-    variables: { slug: slug, userId: "c8ae5f4b-3e52-4afb-b282-3abf09350439" },
-  });
+  try {
+    const { slug } = query;
+    const room = await client.query({
+      query: GET_ONE_ROOM_BY_SLUG,
+      variables: { slug: slug, userId: "c8ae5f4b-3e52-4afb-b282-3abf09350439" },
+    });
 
-  return {
-    props: { room: room.data.getOneRoomBySlug },
-  };
+    return {
+      props: { room: room.data.getOneRoomBySlug },
+    };
+  } catch (error) {
+    return {
+      props: { room: undefined },
+    };
+  }
 }

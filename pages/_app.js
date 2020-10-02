@@ -23,9 +23,8 @@ function MyApp({ Component, pageProps }) {
         <ReduxLoadingBar
           style={{ color: "red", zIndex: 9989, position: "fixed", top: 0 }}
         />
-        <GetData>
-          <Component {...pageProps} />
-        </GetData>
+        <GetData />
+        <Component {...pageProps} />
       </ApolloProvider>
     </Provider>
   );
@@ -33,13 +32,13 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
-const mapStateToProps = ({ auth }) => {
-  return {
-    initial: auth.initial,
-  };
-};
+// const mapStateToProps = ({ auth }) => {
+//   return {
+//     initial: auth.initial,
+//   };
+// };
 
-const GetData = connect(mapStateToProps)((props) => {
+const GetData = connect()((props) => {
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("unitabiz-data"));
     if (data) {
@@ -48,5 +47,6 @@ const GetData = connect(mapStateToProps)((props) => {
       props.dispatch(initialAuthUser());
     }
   }, []);
-  return props.initial ? props.children : null;
+  // return props.initial ? props.children : null;
+  return null;
 });
