@@ -76,6 +76,7 @@ const OfficePage = ({ room }) => {
   useEffect(() => {
     getRoom();
   }, []);
+
   return (
     <Layout room={room} pageTitle="Unitabiz | Office">
       <Navbar />

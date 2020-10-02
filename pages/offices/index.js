@@ -1,18 +1,16 @@
 import Layout from "../../components/Layout";
 import Navbar from "../../components/Navbar";
 import PageHeader from "../../components/PageHeader";
+import Blog from "../../components/Blog";
 import Footer from "../../components/Footer";
-import RoomCRUD from "../../src/app/components/room/RoomCRUD";
 
-const OfficesPage = () => (
-  <Layout pageTitle="Unitabiz | Offices">
+const BlogPage = () => (
+  <Layout pageTitle="Zimed | Blog">
     <Navbar />
-    <PageHeader title="Offices" />
-    <div className="p-3">
-      <RoomCRUD />
-    </div>
+    <PageHeader title="Blog" />
+    <Blog />
     <Footer />
   </Layout>
 );
 
-export default OfficesPage;
+export default BlogPage;

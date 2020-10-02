@@ -78,13 +78,15 @@ class Navbar extends React.Component {
           >
             <div className="container">
               <div className="main-nav__logo-box">
-                <a href="/" className="main-nav__logo">
-                  <img
-                    src="/assets/images/unita-logo.png"
-                    width="105"
-                    alt="Awesome Image"
-                  />
-                </a>
+                <Link href="/">
+                  <a className="main-nav__logo">
+                    <img
+                      src="/assets/images/unita-logo.png"
+                      width="105"
+                      alt="Awesome Image"
+                    />
+                  </a>
+                </Link>
                 <a href="#" className="side-menu__toggler">
                   <i className="fa fa-bars"></i>
                 </a>
@@ -94,11 +96,11 @@ class Navbar extends React.Component {
                   <li className="current scrollToLink">
                     <a href="/">Home</a>
                   </li>
-                  <li className="scrollToLink">
-                    <a href="#features">Offices</a>
+                  <li className="dropdown scrollToLink">
+                    <a href="#">Offices</a>
                     <ul>
                       <li>
-                        <Link href="/blog-details">
+                        <Link href="/offices">
                           <a>Offices</a>
                         </Link>
                       </li>
@@ -173,7 +175,7 @@ class Navbar extends React.Component {
                   </li>
                   {this.props.admin && (
                     <li className="dropdown scrollToLink">
-                      <a href="#blog">Admin</a>
+                      <a href="#">Admin</a>
                       <ul>
                         <li>
                           <Link href="/admin/offices">
