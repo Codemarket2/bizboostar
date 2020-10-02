@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Modal, Button } from "react-bootstrap";
+import FormEmbed from "../formBuilder/FormEmbed";
 import Slider from "../product/slider/index";
 
 const Product = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalBook, setShowModalBook] = useState(false);
   const amenities = props.room ? JSON.parse(props.room.amenities) : {};
   const gridPhoto = props.room.images.filter(
     (i) =>
@@ -169,6 +171,17 @@ const Product = (props) => {
                   </ul>
                 </div>
               )}
+              <div
+                className="pb-4 mb-4"
+                style={{ borderBottom: "1px solid #DDDDDD" }}
+              >
+                <h4>Book Room</h4>
+                <FormEmbed
+                  slug="podcast-studio-1-hour-free"
+                  scrolling="no"
+                  height="300px"
+                />
+              </div>
             </div>
           </Col>
           <Col lg="3">
@@ -190,6 +203,7 @@ const Product = (props) => {
                   block
                   className="border-0"
                   style={{ backgroundColor: "#E92F58" }}
+                  onClick={() => setShowModalBook(true)}
                 >
                   <span>
                     {" "}
@@ -201,6 +215,38 @@ const Product = (props) => {
           </Col>
         </Row>
       </Container>
+      <Modal
+        animation={false}
+        centered
+        // dialogClassName="modal-90w"
+        size="lg"
+        show={showModalBook}
+        onHide={() => setShowModalBook(false)}
+      >
+        <div
+          className="position-absolute"
+          style={{ zIndex: 2, top: "10px", right: "10px" }}
+        >
+          <Button
+            block
+            size="sm"
+            className="border-0"
+            style={{ backgroundColor: "#E92F58" }}
+            onClick={() => setShowModalBook(false)}
+          >
+            <span>
+              <b>Close</b>
+            </span>
+          </Button>
+        </div>
+        <Modal.Body>
+          <FormEmbed
+            slug="podcast-studio-1-hour-free"
+            scrolling="yes"
+            height="300px"
+          />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
