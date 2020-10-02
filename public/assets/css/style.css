@@ -897,10 +897,10 @@ h6 {
     position: absolute;
 }
 
-.banner-one__shape-moc-1 {
+.banner-one__shape-moc-microphone {
     width: 80px;
-    top: 15%;
-    right: -9%;
+    top: 20%;
+    left: 30%;
     -webkit-transform-origin: center bottom;
     transform-origin: center bottom;
     -webkit-animation-fill-mode: both;
@@ -919,10 +919,30 @@ h6 {
     top: 3%;
     left: 0;
 }
+.banner-one__shape-camera {
+    width: 60px;
+    top: 22%;
+    left: 35%;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: banner3Shake;
+    animation-name: banner3Shake;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
 
-.banner-one__shape-2 {
-    top: 17%;
-    left: 7%;
+.banner-one__shape-vr {
+    width: 60px;
+    top: 28%;
+    left: 40%;
     -webkit-transform-origin: center bottom;
     transform-origin: center bottom;
     -webkit-animation-fill-mode: both;

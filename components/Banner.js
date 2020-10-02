@@ -37,7 +37,7 @@ const Banner = () => {
       <img
         src="/assets/images/shapes/vr.png"
         alt=""
-        className="banner-one__shape-2"
+        className="banner-one__shape-vr"
       />
 
       <img
@@ -60,12 +60,18 @@ const Banner = () => {
         alt=""
         className="banner-one__shape-7"
       />
+      
 
       <div className="container" style={{ paddingTop: "200px" }}>
+      <img
+          src="/assets/images/shapes/camera.png"
+          alt=""
+          className="banner-one__shape-moc-microphone"
+        />
         <img
           src="/assets/images/shapes/MICROPHONE.png"
           alt=""
-          className="banner-one__shape-moc-1"
+          className="banner-one__shape-moc-microphone"
         />
         <img
           src="/assets/images/mocs/room.jpg"
