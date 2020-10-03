@@ -173,13 +173,16 @@ const Product = (props) => {
               )}
               <div
                 className="pb-4 mb-4"
-                style={{ borderBottom: "1px solid #DDDDDD" }}
+                // style={{ borderBottom: "1px solid #DDDDDD" }}
               >
                 <h4>Book Room</h4>
                 <FormEmbed
                   slug="podcast-studio-1-hour-free"
-                  scrolling="no"
-                  height="300px"
+                  scrolling="yes"
+                  height="400px"
+                  company="unitabiz"
+                  userid="open"
+                  username="open"
                 />
               </div>
             </div>
@@ -244,6 +247,9 @@ const Product = (props) => {
             slug="podcast-studio-1-hour-free"
             scrolling="yes"
             height="300px"
+            company="unitabiz"
+            userid="open"
+            username="open"
           />
         </Modal.Body>
       </Modal>
