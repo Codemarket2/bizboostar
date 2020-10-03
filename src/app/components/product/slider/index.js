@@ -24,7 +24,6 @@ class Sample extends React.Component {
     };
 
     this.customImages = [];
-    console.log("this.props.room ", this.props.room);
     this.props.room.images.map((i) => {
       let extension = i.original.split(".").pop().toLowerCase();
       if (

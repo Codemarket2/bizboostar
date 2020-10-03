@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { Trash, Edit2, ToggleLeft, ToggleRight } from "react-feather";
+import Link from "next/link";
 
 const RoomTable = ({
   allRooms,
@@ -30,12 +31,12 @@ const RoomTable = ({
         <tbody>
           {allRooms &&
             allRooms.map((r, i) => (
-              <tr>
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <td>
-                  <a target="_blank" href={"/offices/" + r.slug}>
-                    {r.title}
-                  </a>{" "}
+                  <Link href={`/offices/${r.slug}`}>
+                    <a>{r.title}</a>
+                  </Link>
                 </td>
                 <td>${r.price}</td>
                 {location.pathname === "/offices" ? null : (

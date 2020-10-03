@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import Link from "next/link";
+import { Auth } from "aws-amplify";
+import { unsetAuthUser } from "../src/app/redux/actions/auth";
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -55,6 +58,13 @@ export default class Navbar extends React.Component {
       });
   };
 
+  handleLogout = () => {
+    Auth.signOut().then(() => {
+      localStorage.removeItem("unitabiz-data");
+      this.props.dispatch(unsetAuthUser());
+    });
+  };
+
   render() {
     return (
       <div>
@@ -68,13 +78,15 @@ export default class Navbar extends React.Component {
           >
             <div className="container">
               <div className="main-nav__logo-box">
-                <a href="/" className="main-nav__logo">
-                  <img
-                    src="/assets/images/unita-logo.png"
-                    width="105"
-                    alt="Awesome Image"
-                  />
-                </a>
+                <Link href="/">
+                  <a className="main-nav__logo">
+                    <img
+                      src="/assets/images/unita-logo.png"
+                      width="105"
+                      alt="Awesome Image"
+                    />
+                  </a>
+                </Link>
                 <a href="#" className="side-menu__toggler">
                   <i className="fa fa-bars"></i>
                 </a>
@@ -84,11 +96,11 @@ export default class Navbar extends React.Component {
                   <li className="current scrollToLink">
                     <a href="/">Home</a>
                   </li>
-                  <li className="scrollToLink">
-                    <a href="#features">Offices</a>
+                  <li className="dropdown scrollToLink">
+                    <a href="#">Offices</a>
                     <ul>
                       <li>
-                        <Link href="/blog-details">
+                        <Link href="/offices">
                           <a>Offices</a>
                         </Link>
                       </li>
@@ -104,7 +116,7 @@ export default class Navbar extends React.Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="scrollToLink">
+                  <li className="dropdown scrollToLink">
                     <a href="#app-shots">Digital Studios</a>
                     <ul>
                       <li>
@@ -124,8 +136,8 @@ export default class Navbar extends React.Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="scrollToLink">
-                    <a href="#app-shots">Biz Accelerator</a>
+                  <li className="dropdown scrollToLink">
+                    <a href="#">Biz Accelerator</a>
                     <ul>
                       <li>
                         <Link href="/blog-details">
@@ -161,36 +173,49 @@ export default class Navbar extends React.Component {
                   <li className="scrollToLink">
                     <a href="#contact">Contact</a>
                   </li>
-                  <li className="dropdown scrollToLink">
-                    <a href="#blog">Admin</a>
-                    <ul>
-                      <li>
-                        <Link href="/admin/offices">
-                          <a>Manage Offices</a>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/admin/sliders">
-                          <a>Manage Sliders</a>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/admin/forms">
-                          <a>Manage Forms</a>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
+                  {this.props.admin && (
+                    <li className="dropdown scrollToLink">
+                      <a href="#">Admin</a>
+                      <ul>
+                        <li>
+                          <Link href="/admin/offices">
+                            <a>Manage Offices</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/admin/sliders">
+                            <a>Manage Sliders</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/admin/forms">
+                            <a>Manage Forms</a>
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
                 </ul>
               </div>
               <div className="main-nav__right">
-                <a
-                  href="#contact"
-                  data-target="#contact"
-                  className="thm-btn header__btn scroll-to-target"
-                >
-                  Start Trial
-                </a>
+                {this.props.authenticated ? (
+                  <button
+                    type="button"
+                    onClick={this.handleLogout}
+                    className="thm-btn header__btn scroll-to-target text-dark"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link href="/auth/signin">
+                    <button
+                      type="button"
+                      className="thm-btn header__btn scroll-to-target text-dark"
+                    >
+                      SignIn
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </nav>
@@ -199,3 +224,13 @@ export default class Navbar extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ auth }) => {
+  return {
+    authenticated: auth.authenticated,
+    userId: auth.authenticated ? auth.data.attributes.name : null,
+    admin: auth.authenticated ? auth.data.admin : false,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

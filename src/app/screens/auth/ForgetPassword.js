@@ -131,6 +131,11 @@ export default class ForgetPassword extends Component {
               <Button type="submit" color="primary" disabled={disabled}>
                 Reset Password
               </Button>
+              <Link href="/auth/signin">
+                <a>
+                  <small>Already have account? SignIn</small>
+                </a>
+              </Link>
             </div>
           </Form>
         </div>
@@ -138,7 +143,7 @@ export default class ForgetPassword extends Component {
     } else {
       return (
         <div className="mt-4">
-          <h1 className="text-center">Get Password Reset Code</h1>
+          <h1 className="text-center">Forget Password</h1>
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
               <Label for="email">Email</Label>
@@ -154,10 +159,12 @@ export default class ForgetPassword extends Component {
             </FormGroup>
             <div class="d-flex justify-content-between">
               <Button type="submit" color="primary" disabled={disabled}>
-                Forget Password
+                Get Reset Code
               </Button>
-              <Link href="/auth/signup">
-                <small>Create new account? SignUp</small>
+              <Link href="/auth/signin">
+                <a>
+                  <small>Already have account? SignIn</small>
+                </a>
               </Link>
             </div>
           </Form>

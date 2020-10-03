@@ -1,6 +1,5 @@
 import "../node_modules/react-modal-video/scss/modal-video.scss";
 import ReduxLoadingBar from "react-redux-loading";
-
 import { Provider, connect } from "react-redux";
 import { createStore } from "redux";
 import { ApolloProvider } from "@apollo/client";
@@ -33,6 +32,12 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
+// const mapStateToProps = ({ auth }) => {
+//   return {
+//     initial: auth.initial,
+//   };
+// };
+
 const GetData = connect()((props) => {
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("unitabiz-data"));
@@ -42,5 +47,6 @@ const GetData = connect()((props) => {
       props.dispatch(initialAuthUser());
     }
   }, []);
+  // return props.initial ? props.children : null;
   return null;
 });

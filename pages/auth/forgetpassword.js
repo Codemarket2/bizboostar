@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import ForgetPassword from "../../src/app/screens/auth/ForgetPassword";
 
 const ForgetPasswordPage = () => (
-  <Layout pageTitle="Zimed | Blog">
+  <Layout pageTitle="Unitabiz | Signin">
     <Navbar />
     <PageHeader title="Forget Password" />
     <div className="p-5">

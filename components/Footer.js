@@ -179,6 +179,7 @@ export default class Footer extends React.Component {
             <div className="side-menu__top justify-content-end">
               <a href="#" className="side-menu__toggler side-menu__close-btn">
                 <img src="assets/images/shapes/close-1-1.png" alt="" />
+                {/* <i class="fa fa-times fa-lg" aria-hidden="true"></i> */}
               </a>
             </div>
 
@@ -186,11 +187,11 @@ export default class Footer extends React.Component {
             <div className="side-menu__sep"></div>
 
             <div className="side-menu__content">
-              <p>
+              {/* <p>
                 Lorem Ipsum is simply dummy text the printing and setting
                 industry. Lorm Ipsum has been the industry's stanard dummy text
                 ever.{" "}
-              </p>
+              </p> */}
               <p>
                 <a href="contact@unitabiz.com">contact@unitabiz.com</a> <br />{" "}
                 <a href="tel:888-999-0000">888 999 0000</a>

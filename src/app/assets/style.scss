@@ -17,3 +17,36 @@
     border: 1px solid #bebebe;
     outline: none;
 }
+
+.modal-90w {
+    width: 90vw;
+    max-width: 90vw;
+}
+
+.homepage-offices-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.homepage-offices-scroll {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.form-embed-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.form-embed-scroll {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

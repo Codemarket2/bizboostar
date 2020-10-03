@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import Signin from "../../src/app/screens/auth/Signin";
 
 const SigninPage = () => (
-  <Layout pageTitle="Zimed | Blog">
+  <Layout pageTitle="Unitabiz | Signin">
     <Navbar />
     <PageHeader title="Sign-in" />
     <div className="p-5">
