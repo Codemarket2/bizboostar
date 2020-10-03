@@ -83,9 +83,9 @@ const Banner = () => {
                 Creative Hub for Innovators <a href="#">free trial</a>
               </p> */}
               <h3>
-                Offices & Digital Studios for <br />
-                Creative Innovators
+                Offices & Digital Studios <br />
               </h3>
+              <h4>For Creative Innovators</h4>
               <p>
                 Whether you are a solopreneur or a small business owner <br />{" "}
                 or a large corporation we have a perfect space for you.
@@ -103,7 +103,7 @@ const Banner = () => {
             <div
               className="homepage-offices-scroll mt-lg-0 mt-xl-0 mt-4"
               style={{
-                maxHeight: "400px !important",
+                maxHeight: "200px !important",
                 overflowY: "scroll",
                 overflowX: "hidden",
                 // overflow: "hidden",
