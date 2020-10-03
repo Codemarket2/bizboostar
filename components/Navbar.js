@@ -116,7 +116,7 @@ class Navbar extends React.Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="scrollToLink">
+                  <li className="dropdown scrollToLink">
                     <a href="#app-shots">Digital Studios</a>
                     <ul>
                       <li>
@@ -136,8 +136,8 @@ class Navbar extends React.Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="scrollToLink">
-                    <a href="#app-shots">Biz Accelerator</a>
+                  <li className="dropdown scrollToLink">
+                    <a href="#">Biz Accelerator</a>
                     <ul>
                       <li>
                         <Link href="/blog-details">
@@ -208,9 +208,12 @@ class Navbar extends React.Component {
                   </button>
                 ) : (
                   <Link href="/auth/signin">
-                    <a className="thm-btn header__btn scroll-to-target">
+                    <button
+                      type="button"
+                      className="thm-btn header__btn scroll-to-target text-dark"
+                    >
                       SignIn
-                    </a>
+                    </button>
                   </Link>
                 )}
               </div>
