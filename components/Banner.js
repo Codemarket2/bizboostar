@@ -59,10 +59,9 @@ const Banner = () => {
         alt=""
         className="banner-one__shape-7"
       />
-      
 
       <div className="container" style={{ paddingTop: "200px" }}>
-      <img
+        <img
           src="/assets/images/shapes/camera.png"
           alt=""
           className="banner-one__shape-moc-camera"
@@ -85,10 +84,8 @@ const Banner = () => {
               </p> */}
               <h3>
                 Offices & Digital Studios <br />
-                </h3>
-                <h4>
-                For Creative Innovators
-                </h4>
+              </h3>
+              <h4>For Creative Innovators</h4>
               <p>
                 Whether you are a solopreneur or a small business owner <br />{" "}
                 or a large corporation we have a perfect space for you.
@@ -102,9 +99,9 @@ const Banner = () => {
               </a>
             </div>
           </div>
-          <div className="col-lg-6 mt-md-3">
+          <div className="col-lg-6">
             <div
-              className="homepage-offices-scroll"
+              className="homepage-offices-scroll mt-lg-0 mt-xl-0 mt-4"
               style={{
                 maxHeight: "200px !important",
                 overflowY: "scroll",
@@ -149,14 +146,6 @@ const Banner = () => {
                                     alt={r.title}
                                   />
                                 )}
-                                {roomImage[1] && (
-                                  <img
-                                    className="ml-1"
-                                    style={{ width: "100px" }}
-                                    src={roomImage[1].thumbnail}
-                                    alt={r.title}
-                                  />
-                                )}
                               </div>
                             </td>
                           </tr>
@@ -176,9 +165,12 @@ const Banner = () => {
                   borderRadius: "12px",
                   boxShadow: "rgba(0, 0, 0, 0.12) 0px 6px 16px",
                 }}
-                height="140px"
+                height="150px"
                 slug="homepage-email-form"
                 scrolling="no"
+                company="unitabiz"
+                userid="open"
+                username="open"
               />
             </div>
           </div>

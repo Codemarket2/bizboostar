@@ -93,84 +93,84 @@ class Navbar extends React.Component {
               </div>
               <div className="main-nav__main-navigation">
                 <ul className="one-page-scroll-menu main-nav__navigation-box">
-                  <li className="current scrollToLink">
+                  <li className="d-md-block d-sm-block current scrollToLink">
                     <a href="/">Home</a>
                   </li>
-                  <li className="dropdown scrollToLink">
+                  <li className="d-md-block d-sm-block dropdown scrollToLink">
                     <a href="#">Offices</a>
                     <ul>
-                      <li>
+                      <li className="d-block">
                         <Link href="/offices">
                           <a>Offices</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Team Pods</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Co-working</a>
                         </Link>
                       </li>
                     </ul>
                   </li>
-                  <li className="dropdown scrollToLink">
+                  <li className="d-md-block d-sm-block dropdown scrollToLink">
                     <a href="#app-shots">Digital Studios</a>
                     <ul>
-                      <li>
+                      <li className="d-block">
                         <Link href="/digital-studio/podcast">
                           <a>Podcast Studio</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Photo/Video Studio</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>AR/VR Studio</a>
                         </Link>
                       </li>
                     </ul>
                   </li>
-                  <li className="dropdown scrollToLink">
+                  <li className="d-md-block d-sm-block dropdown scrollToLink">
                     <a href="#">Biz Accelerator</a>
                     <ul>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Webinars</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Member Highlights</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Office Hours</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Referral Network</a>
                         </Link>
                       </li>
-                      <li>
+                      <li className="d-block">
                         <Link href="/blog-details">
                           <a>Happy Hours</a>
                         </Link>
                       </li>
                     </ul>
                   </li>
-                  <li className="scrollToLink">
+                  <li className="d-md-block d-sm-block scrollToLink">
                     <a href="#testimonials">Testimonials</a>
                   </li>
 
-                  <li className="scrollToLink">
+                  <li className="d-md-block d-sm-block scrollToLink">
                     <a href="#contact">Contact</a>
                   </li>
                   {this.props.admin && (
@@ -195,6 +195,26 @@ class Navbar extends React.Component {
                       </ul>
                     </li>
                   )}
+                  <li className="d-lg-none d-md-none d-sm-block d-xs-block">
+                    {this.props.authenticated ? (
+                      <button
+                        type="button"
+                        onClick={this.handleLogout}
+                        className="position-relative account__btn d-inline w-auto thm-btn comment-one__btn"
+                      >
+                        Logout
+                      </button>
+                    ) : (
+                      <Link href="/auth/signin">
+                        <button
+                          type="button"
+                          className="position-relative account__btn d-inline w-auto thm-btn comment-one__btn"
+                        >
+                          SignIn
+                        </button>
+                      </Link>
+                    )}
+                  </li>
                 </ul>
               </div>
               <div className="main-nav__right">
