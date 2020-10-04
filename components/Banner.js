@@ -79,9 +79,10 @@ const Banner = () => {
         <div className="row">
           <div className="col-lg-6">
             <div className="banner-one__content">
-              {/* <p className="banner-one__tag-line">
-                Creative Hub for Innovators <a href="#">free trial</a>
-              </p> */}
+              <p className="banner-one__tag-line">
+                El Segundo<a href="#">Manhattan Beach</a>
+              </p>
+             
               <h3>
                 Offices & Digital Studios <br />
               </h3>
@@ -103,7 +104,7 @@ const Banner = () => {
             <div
               className="homepage-offices-scroll mt-lg-0 mt-xl-0 mt-4"
               style={{
-                maxHeight: "200px !important",
+                maxHeight: "320px !important",
                 overflowY: "scroll",
                 overflowX: "hidden",
                 // overflow: "hidden",
@@ -129,19 +130,31 @@ const Banner = () => {
                         );
                         return (
                           <tr key={i}>
-                            <td className="text-center">
+                            {/* <td className="text-center">
                               <Link href={`/offices/${r.slug}`}>
                                 <a className="text-dark">
                                   <b>{r.title}</b>
                                 </a>
                               </Link>
+                            </td> */}
+                            <td>
+                              <div className="text-center">
+                                {roomImage[0] && (
+                                  <img
+                                    //   className="d-inline"
+                                    style={{ width: "265px" }}
+                                    src={roomImage[0].thumbnail}
+                                    alt={r.title}
+                                  />
+                                )}
+                              </div>
                             </td>
                             <td>
                               <div className="text-center">
                                 {roomImage[0] && (
                                   <img
                                     //   className="d-inline"
-                                    style={{ width: "100px" }}
+                                    style={{ width: "265px" }}
                                     src={roomImage[0].thumbnail}
                                     alt={r.title}
                                   />
@@ -154,7 +167,13 @@ const Banner = () => {
                     : null}
                 </tbody>
               </Table>
+              
             </div>
+           {/*  <div className="banner-one__content">
+            <p className="banner-one__tag-line">
+                Creative Hub for Innovators <a href="#">free trial</a>
+              </p>
+              </div> */}
             <div>
               <FormEmbed
                 style={{

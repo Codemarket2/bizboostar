@@ -17,5 +17,27 @@
                 "unitabizfrontend21d9cf9b21d9cf9b": {}
             }
         }
+    },
+    "unitnextjs": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-unitabizfrontend-unitnextjs-112459-authRole",
+            "UnauthRoleArn": "arn:aws:iam::314529514644:role/amplify-unitabizfrontend-unitnextjs-112459-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::314529514644:role/amplify-unitabizfrontend-unitnextjs-112459-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-unitabizfrontend-unitnextjs-112459-deployment",
+            "UnauthRoleName": "amplify-unitabizfrontend-unitnextjs-112459-unauthRole",
+            "StackName": "amplify-unitabizfrontend-unitnextjs-112459",
+            "StackId": "arn:aws:cloudformation:us-east-1:314529514644:stack/amplify-unitabizfrontend-unitnextjs-112459/c0f61eb0-05a5-11eb-b725-123cb1b397a4",
+            "AmplifyAppId": "dp372i4m082xm"
+        },
+        "categories": {
+            "auth": {
+                "userPoolGroups": {},
+                "unitabizfrontend21d9cf9b21d9cf9b": {}
+            },
+            "function": {
+                "AdminQueries06c9a16f": {}
+            }
+        }
     }
 }

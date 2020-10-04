@@ -1,0 +1,17 @@
+{
+  "name": "cg26tbp-0s9wh2c",
+  "hash": "k69dzhdYIuEc2uHnh+7svJo1TK3kwEMq8g2sAvfJmYs=",
+  "description": "Default Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "C:\\Users\\Administrator\\Documents\\appdatasoft\\sumiventures\\codemarket\\unitabiz-nextjs\\.serverless_nextjs\\default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::314529514644:role/cg26tbp-c7zztin"
+  },
+  "arn": "arn:aws:lambda:us-east-1:314529514644:function:cg26tbp-0s9wh2c",
+  "region": "us-east-1"
+}
