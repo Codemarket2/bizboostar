@@ -83,7 +83,7 @@ const Banner = () => {
               <p className="banner-one__tag-line">
                 El Segundo<a href="#">Manhattan Beach</a>
               </p>
-             
+
               <h3>
                 Offices & Digital Studios <br />
               </h3>
@@ -139,31 +139,34 @@ const Banner = () => {
                               </Link>
                             </td> */}
                             <td>
-                              <div className="text-center" style={{ zIndex: 2, bottom: "10px", right: "25px" }}>
-                              
+                              <div
+                                className="text-center"
+                                style={{
+                                  zIndex: 2,
+                                  bottom: "10px",
+                                  right: "25px",
+                                }}
+                              >
                                 {roomImage[0] && (
                                   <img
                                     //   className="d-inline"
                                     style={{ width: "265px" }}
                                     src={roomImage[0].thumbnail}
                                     alt={r.title}
-                                    
                                   />
-                                  
                                 )}
                                 <Button
-                    block
-                    size="sm"
-                    className="border-0"
-                    style={{ backgroundColor: "#E92F58" }}
-                    onClick={() => setShowModal(true)}
-                  >
-                    <span>
-                      <b>{r.title}</b>
-                    </span>
-                  </Button>
+                                  block
+                                  size="sm"
+                                  className="border-0"
+                                  style={{ backgroundColor: "#E92F58" }}
+                                  // onClick={() => setShowModal(true)}
+                                >
+                                  <span>
+                                    <b>{r.title}</b>
+                                  </span>
+                                </Button>
                               </div>
-                      
                             </td>
                             <td>
                               <div className="text-center">
@@ -176,16 +179,16 @@ const Banner = () => {
                                   />
                                 )}
                                 <Button
-                    block
-                    size="sm"
-                    className="border-0"
-                    style={{ backgroundColor: "#E92F58" }}
-                    onClick={() => setShowModal(true)}
-                  >
-                    <span>
-                      <b>See all photos</b>
-                    </span>
-                  </Button>
+                                  block
+                                  size="sm"
+                                  className="border-0"
+                                  style={{ backgroundColor: "#E92F58" }}
+                                  // onClick={() => setShowModal(true)}
+                                >
+                                  <span>
+                                    <b>See all photos</b>
+                                  </span>
+                                </Button>
                               </div>
                             </td>
                           </tr>
@@ -194,9 +197,8 @@ const Banner = () => {
                     : null}
                 </tbody>
               </Table>
-              
             </div>
-           {/*  <div className="banner-one__content">
+            {/*  <div className="banner-one__content">
             <p className="banner-one__tag-line">
                 Creative Hub for Innovators <a href="#">free trial</a>
               </p>

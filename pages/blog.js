@@ -4,16 +4,13 @@ import PageHeader from "../components/PageHeader";
 import Blog from "../components/Blog";
 import Footer from "../components/Footer";
 
-
 const BlogPage = () => (
-
-    <Layout pageTitle="Zimed | Blog">
-        <Navbar />
-        <PageHeader title="Blog" />
-        <Blog />
-        <Footer />
-    </Layout>
-
-)
+  <Layout pageTitle="Unitabiz | Blog">
+    <Navbar />
+    <PageHeader />
+    <Blog />
+    <Footer />
+  </Layout>
+);
 
 export default BlogPage;

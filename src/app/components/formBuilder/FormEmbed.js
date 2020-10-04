@@ -9,9 +9,6 @@ const FormEmbed = ({
   userid,
   username,
 }) => {
-  console.log(
-    `https://vivekt.unitabiz.com/embbed/forms/${slug}?company=${company}&userid=${userid}&username=${username}`
-  );
   return (
     <div style={style}>
       {slug && (

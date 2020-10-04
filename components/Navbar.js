@@ -178,6 +178,11 @@ class Navbar extends React.Component {
                       <a href="#">Admin</a>
                       <ul>
                         <li>
+                          <Link href="/admin/yelp">
+                            <a>Yelp Scraper</a>
+                          </Link>
+                        </li>
+                        <li>
                           <Link href="/admin/offices">
                             <a>Manage Offices</a>
                           </Link>
@@ -206,12 +211,14 @@ class Navbar extends React.Component {
                       </button>
                     ) : (
                       <Link href="/auth/signin">
-                        <button
-                          type="button"
-                          className="position-relative account__btn d-inline w-auto thm-btn comment-one__btn"
-                        >
-                          SignIn
-                        </button>
+                        <a>
+                          <button
+                            type="button"
+                            className="position-relative account__btn d-inline w-auto thm-btn comment-one__btn"
+                          >
+                            SignIn
+                          </button>
+                        </a>
                       </Link>
                     )}
                   </li>
