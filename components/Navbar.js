@@ -105,7 +105,7 @@ class Navbar extends React.Component {
                         </Link>
                       </li>
                       <li className="d-block">
-                        <Link href="/blog-details">
+                        <Link href="/team-pods">
                           <a>Team Pods</a>
                         </Link>
                       </li>
