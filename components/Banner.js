@@ -105,7 +105,7 @@ const Banner = () => {
             <div
               className="homepage-offices-scroll mt-lg-0 mt-xl-0 mt-4"
               style={{
-                maxHeight: "320px !important",
+                maxHeight: "380px !important",
                 overflowY: "scroll",
                 overflowX: "hidden",
                 // overflow: "hidden",
@@ -140,7 +140,16 @@ const Banner = () => {
                             </td> */}
                             <td>
                               <div className="text-center" style={{ zIndex: 2, bottom: "10px", right: "25px" }}>
-                              <Button
+                              
+                                {roomImage[0] && (
+                                  <img
+                                    //   className="d-inline"
+                                    style={{ width: "265px" }}
+                                    src={roomImage[0].thumbnail}
+                                    alt={r.title}
+                                  />
+                                )}
+                                <Button
                     block
                     size="sm"
                     className="border-0"
@@ -151,15 +160,6 @@ const Banner = () => {
                       <b>See all photos</b>
                     </span>
                   </Button>
-                                {roomImage[0] && (
-                                  <img
-                                    //   className="d-inline"
-                                    style={{ width: "265px" }}
-                                    src={roomImage[0].thumbnail}
-                                    alt={r.title}
-                                  />
-                                )}
-                                
                               </div>
                       
                             </td>
@@ -173,6 +173,17 @@ const Banner = () => {
                                     alt={r.title}
                                   />
                                 )}
+                                <Button
+                    block
+                    size="sm"
+                    className="border-0"
+                    style={{ backgroundColor: "#E92F58" }}
+                    onClick={() => setShowModal(true)}
+                  >
+                    <span>
+                      <b>See all photos</b>
+                    </span>
+                  </Button>
                               </div>
                             </td>
                           </tr>
