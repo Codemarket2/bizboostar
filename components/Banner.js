@@ -147,7 +147,9 @@ const Banner = () => {
                                     style={{ width: "265px" }}
                                     src={roomImage[0].thumbnail}
                                     alt={r.title}
+                                    
                                   />
+                                  
                                 )}
                                 <Button
                     block
@@ -157,7 +159,7 @@ const Banner = () => {
                     onClick={() => setShowModal(true)}
                   >
                     <span>
-                      <b>See all photos</b>
+                      <b>{r.title}</b>
                     </span>
                   </Button>
                               </div>
