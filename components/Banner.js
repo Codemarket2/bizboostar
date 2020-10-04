@@ -1,5 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import React from "react";
+import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import { Table } from "react-bootstrap";
 import Link from "next/link";
 import FormEmbed from "../src/app/components/formBuilder/FormEmbed";
@@ -129,7 +130,7 @@ const Banner = () => {
                             i.original.split(".").pop().toLowerCase() === "gif"
                         );
                         return (
-                          <tr key={i}>
+                          <tr key={r}>
                             {/* <td className="text-center">
                               <Link href={`/offices/${r.slug}`}>
                                 <a className="text-dark">
@@ -138,7 +139,18 @@ const Banner = () => {
                               </Link>
                             </td> */}
                             <td>
-                              <div className="text-center">
+                              <div className="text-center" style={{ zIndex: 2, bottom: "10px", right: "25px" }}>
+                              <Button
+                    block
+                    size="sm"
+                    className="border-0"
+                    style={{ backgroundColor: "#E92F58" }}
+                    onClick={() => setShowModal(true)}
+                  >
+                    <span>
+                      <b>See all photos</b>
+                    </span>
+                  </Button>
                                 {roomImage[0] && (
                                   <img
                                     //   className="d-inline"
@@ -147,7 +159,9 @@ const Banner = () => {
                                     alt={r.title}
                                   />
                                 )}
+                                
                               </div>
+                      
                             </td>
                             <td>
                               <div className="text-center">
