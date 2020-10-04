@@ -8,30 +8,29 @@ const TeamPods = () => {
         <div className="row">
           <div className="col-lg-8">
             <div className="blog-details__content">
-              <div className="blog-details__image">
+              <div>
                 <Row>
                   <Col lg="8">
                     <img
-                      style={{ width: "100%" }}
-                      src="/assets/images/blog/blog-d-1.jpg"
+                      style={{ width: "100%", borderRadius: "3px" }}
+                      src="https://unitabiz-frontend-media222703-dev.s3.us-east-1.amazonaws.com/public/images/61d15906-c2b9-4135-b039-af31df793409Room208thumbnail.jpg"
                       alt=""
                     />
                   </Col>
                   <Col lg="4">
                     <img
-                      style={{ width: "100%" }}
-                      src="/assets/images/blog/blog-d-1.jpg"
+                      style={{ width: "100%", borderRadius: "3px" }}
+                      src="https://unitabiz-frontend-media222703-dev.s3.us-east-1.amazonaws.com/public/images/d9ea0e44-d9c0-4d67-ad69-827f1af8b300Office101thumbnail.jpg"
                       alt=""
                     />
                     <img
-                      className="mt-1"
-                      style={{ width: "100%" }}
-                      src="/assets/images/blog/blog-d-1.jpg"
+                      className="mt-3"
+                      style={{ width: "100%", borderRadius: "3px" }}
+                      src="https://unitabiz-frontend-media222703-dev.s3.us-east-1.amazonaws.com/public/images/61d15906-c2b9-4135-b039-af31df793409Room208thumbnail.jpg"
                       alt=""
                     />
                   </Col>
                 </Row>
-                {/* <img src="/assets/images/blog/blog-d-1.jpg" alt=""/> */}
               </div>
               <ul className="blog-one__meta list-unstyled">
                 <li>
