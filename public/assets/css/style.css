@@ -876,6 +876,33 @@ h6 {
     padding-left: 30px;
     line-height: 40px;
 }
+.banner-one__content .banner-one__tag-line input {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, .1);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: .2em;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-left: 30px;
+    line-height: 80px;
+}
+
+.banner-one__content .banner-one__tag-line button {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, .1);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: .2em;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-left: 30px;
+    line-height: 80px;
+}
 
 .banner-one__content .banner-one__tag-line a {
     display: inline-block;

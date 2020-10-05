@@ -198,12 +198,12 @@ const Banner = () => {
                 </tbody>
               </Table>
             </div>
-            {/*  <div className="banner-one__content">
-            <p className="banner-one__tag-line">
-                Creative Hub for Innovators <a href="#">free trial</a>
-              </p>
-              </div> */}
-            <div>
+             <div className="banner-one__content">
+            <div className="banner-one__tag-line">
+                      Enter Your Email<button> Get FREE 1 Day Pass </button>
+              </div>
+              </div>
+          {/*   <div>
               <FormEmbed
                 style={{
                   marginTop: "10px",
@@ -220,7 +220,7 @@ const Banner = () => {
                 userid="open"
                 username="open"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
