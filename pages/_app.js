@@ -1,4 +1,5 @@
 import "../node_modules/react-modal-video/scss/modal-video.scss";
+import "../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import ReduxLoadingBar from "react-redux-loading";
 import { Provider, connect } from "react-redux";
 import { createStore } from "redux";

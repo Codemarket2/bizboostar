@@ -158,7 +158,6 @@ function RoomCRUD(props) {
         query: GET_ALL_ROOMS,
       })
       .then(({ data }) => {
-        setAllRooms(data);
         setAllRooms(data.getAllRooms);
         props.dispatch(hideLoading());
       })

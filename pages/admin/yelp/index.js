@@ -2,7 +2,7 @@ import Layout from "../../../components/Layout";
 import Navbar from "../../../components/Navbar";
 import PageHeader from "../../../components/PageHeader";
 import Footer from "../../../components/Footer";
-import Yelp from "../../../src/app/screens/data/Yelp";
+import YelpForm from "../../../src/app/components/yelp/YelpForm";
 import AuthRequired from "../../../src/app/components/other/AuthRequired";
 
 const BlogPage = () => (
@@ -10,7 +10,7 @@ const BlogPage = () => (
     <Navbar />
     <PageHeader />
     <AuthRequired redirectPath="/admin/offices" mustAdmin={true}>
-      <Yelp />
+      <YelpForm />
     </AuthRequired>
     <Footer />
   </Layout>
