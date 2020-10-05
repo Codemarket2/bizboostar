@@ -81,13 +81,13 @@ const Banner = () => {
           <div className="col-lg-6">
             <div className="banner-one__content">
               <p className="banner-one__tag-line">
-                El Segundo<a href="#">Manhattan Beach</a>
+              Community<a href="#">Hub for Creative Innovators</a>
               </p>
 
               <h3>
                 Offices & Digital Studios <br />
               </h3>
-              <h4>For Creative Innovators</h4>
+              
               <p>
                 Whether you are a solopreneur or a small business owner <br />{" "}
                 or a large corporation we have a perfect space for you.

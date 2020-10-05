@@ -14,8 +14,8 @@ const FeaturesOne = () => {
                                             <div className="cta-three__content">
                                                 <div className="block-title text-left">
                                                     <span className="block-title__bubbles"></span>
-                                                    <p>Checkout App Features</p>
-                                                    <h3>Control Everything From One Application</h3>
+                                                    <p>More than a Space</p>
+                                                    <h3>Innovative Members</h3>
                                                 </div>
                                                 <div className="cta-three__box-wrap">
                                                     <div className="cta-three__box">
@@ -23,7 +23,7 @@ const FeaturesOne = () => {
                                                             <i className="zimed-icon-strategy"></i>
                                                         </div>
                                                         <div className="cta-three__box-content">
-                                                            <h3>Feature Here</h3>
+                                                            <h3>Referral Network</h3>
                                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                                                                 sed do eiusmod tempor anagi
                                                                 icdunt ut labore et dolore magna aliqua.</p>
@@ -37,7 +37,7 @@ const FeaturesOne = () => {
                                                         </div>
 
                                                         <div className="cta-three__box-content">
-                                                            <h3>Feature Here</h3>
+                                                            <h3>Office Hours</h3>
                                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                                                                 sed do eiusmod tempor anagi
                                                                 icdunt ut labore et dolore magna aliqua.</p>
