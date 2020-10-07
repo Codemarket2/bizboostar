@@ -10,8 +10,9 @@ const TemplateTable = ({ allData, handleEdit, handleDelete, disabled }) => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Mailing List</th>
-            <th>Template Name</th>
+            <th>Name</th>
+            <th>MailingList</th>
+            <th>TemplateName</th>
             <th>CreatedAt</th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@ const TemplateTable = ({ allData, handleEdit, handleDelete, disabled }) => {
             allData.map((r, i) => (
               <tr key={i}>
                 <td>{i + 1}</td>
+                <td>{r.campaignName}</td>
                 <td>{r.mailingList}</td>
                 <td>{r.templateName}</td>
                 <td>{r.createdAt}</td>

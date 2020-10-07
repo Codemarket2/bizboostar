@@ -10,6 +10,7 @@ import TemplateTable from "./CampaignTable";
 const Create_One_Email_Campaign = gql`
   mutation CreateOneEmailCampaign(
     $userId: String!
+    $campaignName: String!
     $mailingList: String!
     $templateName: String!
     $defaultTemplateData: YelpEmailScrapedInput
@@ -18,6 +19,7 @@ const Create_One_Email_Campaign = gql`
   ) {
     createOneEmailCampaign(
       userId: $userId
+      campaignName: $campaignName
       mailingList: $mailingList
       templateName: $templateName
       defaultTemplateData: $defaultTemplateData
@@ -25,6 +27,7 @@ const Create_One_Email_Campaign = gql`
       collection_of_email_scraped: $collection_of_email_scraped
     ) {
       _id
+      campaignName
       mailingList
       templateName
       createdAt
@@ -46,6 +49,7 @@ const GET_ALL_CAMPAIGNS = gql`
   query GetAllEmailCampaignsByUserId($userId: String!) {
     getAllEmailCampaignsByUserId(userId: $userId) {
       _id
+      campaignName
       mailingList
       templateName
       createdAt
@@ -113,7 +117,7 @@ const SendTemplateEmail = (props) => {
   const [allMailingList, setAllMailingList] = useState([]);
 
   const [payload, setPayload] = useState({
-    campaignName: "Vivek Demo 1",
+    campaignName: "",
     mailingList: "",
     defaultTemplateData: {
       business_name: "Codemarket",
@@ -206,6 +210,7 @@ const SendTemplateEmail = (props) => {
       const { data } = await createOneEmailCampaign({
         variables: {
           userId: props.userId,
+          campaignName: payload.campaignName,
           mailingList: payload.mailingList,
           templateName: payload.templateName,
           defaultTemplateData: payload.defaultTemplateData,
@@ -227,7 +232,7 @@ const SendTemplateEmail = (props) => {
 
   return (
     <div className="container py-5">
-      {/* {JSON.stringify(payload)} */}
+      <h2 className="text-center">LAUNCH CAMPAIGN</h2>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Select
@@ -256,6 +261,7 @@ const SendTemplateEmail = (props) => {
             onChange={(e) =>
               setPayload({ ...payload, campaignName: e.target.value })
             }
+            required
           />
         </FormGroup>
         <Button disabled={disabled} type="submit" color="primary" block>

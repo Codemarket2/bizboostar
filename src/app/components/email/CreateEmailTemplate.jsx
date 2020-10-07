@@ -78,10 +78,10 @@ const Email = (props) => {
   const [deleteOneEmailTemplate] = useMutation(DELETE_ONE_EMAIL_TEMPLATE);
 
   const [payload, setPayload] = useState({
-    templateName: "vivekdemo101",
-    htmlPart: "<h1>Hello Guys</h1><p>I heard you are from {{city}}</p>",
-    subjectPart: "Offer for you guys in {{city}}",
-    textPart: "Hello Guys I heard you are from {{city}}",
+    templateName: "",
+    htmlPart: "",
+    subjectPart: "",
+    textPart: "",
     disabled: false,
   });
   const [disabled, setDisabled] = useState(false);
@@ -206,12 +206,13 @@ const Email = (props) => {
 
   return (
     <div className="py-5 container">
+      <h2 className="text-center">CREATE EMAIL TEMPLATE</h2>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Input
             type="text"
-            name="templateName"
-            placeholder="Template Name"
+            name="keys"
+            placeholder="keys"
             value="Address_line1, emails, business_name, city, keyword, postal_code, state, website_link"
             disabled={true}
             required
@@ -234,7 +235,7 @@ const Email = (props) => {
           <Input
             type="text"
             name="subjectPart"
-            placeholder="Subject eg Hello {{businessName}}"
+            placeholder="Subject eg Offer for you guys in {{city}}"
             value={payload.subjectPart}
             onChange={(e) =>
               setPayload({ ...payload, subjectPart: e.target.value })
@@ -246,7 +247,7 @@ const Email = (props) => {
           <Input
             type="textarea"
             name="htmlPart"
-            placeholder="HTML Body eg <h1>How are you {{businessName}}<h1>"
+            placeholder="HTML Body eg <h1>Hello </h1><p>I heard you are from {{city}}</p>"
             value={payload.htmlPart}
             onChange={(e) =>
               setPayload({ ...payload, htmlPart: e.target.value })
@@ -258,7 +259,7 @@ const Email = (props) => {
           <Input
             type="textarea"
             name="textPart"
-            placeholder="Text Body eg <h1>How are you {{businessName}}<h1>"
+            placeholder="Text Body eg Hello Guys I heard you are from {{city}}"
             value={payload.textPart}
             onChange={(e) =>
               setPayload({ ...payload, textPart: e.target.value })
