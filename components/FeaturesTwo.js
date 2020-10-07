@@ -13,8 +13,8 @@ const FeaturesTwo = () => {
                                 <div className="cta-two__content">
                                     <div className="block-title text-left">
                                         <span className="block-title__bubbles"></span>
-                                        <p>Checkout App Features</p>
-                                        <h3>Discover the Powerful Tools For Your Repeat Customers</h3>
+                                        <p>Tools for Your Success</p>
+                                        <h3>Online Classes & Webinars</h3>
                                     </div>
 
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting

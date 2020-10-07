@@ -81,13 +81,13 @@ const Banner = () => {
           <div className="col-lg-6">
             <div className="banner-one__content">
               <p className="banner-one__tag-line">
-                El Segundo<a href="#">Manhattan Beach</a>
+              Community<a href="#">Hub for Creative Innovators</a>
               </p>
 
               <h3>
                 Offices & Digital Studios <br />
               </h3>
-              <h4>For Creative Innovators</h4>
+              
               <p>
                 Whether you are a solopreneur or a small business owner <br />{" "}
                 or a large corporation we have a perfect space for you.
@@ -198,12 +198,12 @@ const Banner = () => {
                 </tbody>
               </Table>
             </div>
-            {/*  <div className="banner-one__content">
-            <p className="banner-one__tag-line">
-                Creative Hub for Innovators <a href="#">free trial</a>
-              </p>
-              </div> */}
-            <div>
+             <div className="banner-one__content">
+            <div className="banner-one__tag-line">
+                      Enter Your Email<button> Get FREE 1 Day Pass </button>
+              </div>
+              </div>
+          {/*   <div>
               <FormEmbed
                 style={{
                   marginTop: "10px",
@@ -220,7 +220,7 @@ const Banner = () => {
                 userid="open"
                 username="open"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
