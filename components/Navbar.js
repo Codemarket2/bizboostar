@@ -183,6 +183,16 @@ class Navbar extends React.Component {
                           </Link>
                         </li>
                         <li>
+                          <Link href="/admin/email">
+                            <a>Email Campaign</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/admin/email/temaplates">
+                            <a>Email Templates</a>
+                          </Link>
+                        </li>
+                        <li>
                           <Link href="/admin/offices">
                             <a>Manage Offices</a>
                           </Link>

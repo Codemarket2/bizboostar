@@ -67,7 +67,7 @@ const YelpForm = ({ dispatch, authenticated, userId }) => {
     endLimit: "",
   });
 
-  const getRooms = async () => {
+  const getData = async () => {
     dispatch(showLoading());
 
     client
@@ -86,7 +86,7 @@ const YelpForm = ({ dispatch, authenticated, userId }) => {
   };
 
   useEffect(() => {
-    getRooms();
+    getData();
   }, []);
 
   const handleSubmit = async (e) => {
