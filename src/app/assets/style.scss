@@ -50,3 +50,53 @@
     scrollbar-width: none;
     /* Firefox */
 }
+
+.homepage-email-button {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #feec66;
+    color: #23242b;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 30px;
+    transition: all 500ms ease;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+}
+
+// homepage-email-input::placeholder {
+//     color: white;
+// }
+// homepage-email-input:-ms-input-placeholder {
+//     /* Internet Explorer 10-11 */
+//     color: white;
+// }
+// homepage-email-input::-ms-input-placeholder {
+//     /* Microsoft Edge */
+//     color: white;
+// }
+homepage-email-input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: yellow;
+}
+
+homepage-email-input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: yellow;
+}
+
+homepage-email-input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: yellow;
+}
+
+homepage-email-input:-moz-placeholder {
+    /* Firefox 18- */
+    color: yellow;
+}

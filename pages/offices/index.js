@@ -5,9 +5,9 @@ import Blog from "../../components/Blog";
 import Footer from "../../components/Footer";
 
 const BlogPage = () => (
-  <Layout pageTitle="Zimed | Blog">
+  <Layout pageTitle="Unitabiz | Offices">
     <Navbar />
-    <PageHeader title="Blog" />
+    <PageHeader title="Offices" />
     <Blog />
     <Footer />
   </Layout>
