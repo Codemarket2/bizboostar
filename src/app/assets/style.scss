@@ -1,6 +1,10 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 @import "~react-image-gallery/styles/css/image-gallery.css";
 // @import '~formiojs/dist/formio.full.css';
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .single__account .input__box span {
     font-size: 18px;
     display: block;

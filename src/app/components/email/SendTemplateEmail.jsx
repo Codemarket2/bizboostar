@@ -72,10 +72,23 @@ const GET_ALL_YELP_DATA = gql`
   query GetAllYelpData($userid: String!) {
     getAllYelpData(userid: $userid) {
       _id
-      name
-      keywords
       city
+      keywords
+      name
+      status
+      limit
       email_counter
+      collection_of_email_scraped {
+        Address_line1
+        emails
+        business_name
+        city
+        keyword
+        postal_code
+        state
+        # telephone
+        website_link
+      }
     }
   }
 `;
@@ -165,7 +178,7 @@ const SendTemplateEmail = (props) => {
       let tempML = data3.data.getAllYelpData.map((y) => ({
         value: y.collection_of_email_scraped,
         label: y.name,
-        isDisabled: true,
+        isDisabled: y.name === "TestMailingList" ? false : true,
       }));
       setAllMailingList([customList, ...tempML]);
       setIsLoading(false);
@@ -180,10 +193,16 @@ const SendTemplateEmail = (props) => {
     getData();
   }, []);
 
+  const omitTypename = (key, value) =>
+    key === "__typename" ? undefined : value;
+
   const handleSelectMailingList = (selectedOption) => {
     setPayload({
       ...payload,
-      collection_of_email_scraped: selectedOption.value,
+      collection_of_email_scraped: JSON.parse(
+        JSON.stringify(selectedOption.value),
+        omitTypename
+      ),
       mailingList: selectedOption.label,
     });
   };

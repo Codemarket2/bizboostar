@@ -23,12 +23,13 @@ const YelpTable = ({ allData, setShowRow, setOneRow }) => {
               <tr key={i}>
                 <td>{i + 1}</td>
                 <td>
-                  {r.status === "Scraping Completed" ? (
+                  {r.collection_of_email_scraped ? (
                     <a
                       onClick={() => {
                         setOneRow(r);
                         setShowRow(true);
                       }}
+                      className="cursor-pointer"
                     >
                       {r.name}
                     </a>
